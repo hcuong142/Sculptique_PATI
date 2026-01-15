@@ -29,6 +29,16 @@ body {
     color: var(--text-color);
 }
 
+body[data-state='max'] #maximized,
+body[data-state='max'] #maximized * {
+    opacity: 1;
+    visibility: visible;
+}
+
+#maximized * {
+    transition: opacity 0.3s ease-out;
+}
+
 button,
 input,
 [tabindex] {
@@ -41,7 +51,6 @@ a[href] {
     text-decoration: none;
 }
 
-//custom tippy tooltip
 body {
     .tippy-box {
         border-radius: 8px;

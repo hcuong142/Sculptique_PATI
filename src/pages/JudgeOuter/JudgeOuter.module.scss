@@ -1,0 +1,82 @@
+.productJudgeOuter.outerMyBloating {
+    padding-bottom: 0;
+}
+.productJudgeOuter {
+    padding: 56px 0;
+}
+.pageWidth {
+    max-width: 1340px !important;
+    margin: 0 auto;
+    .productJudgeContainer {
+        max-width: 800px;
+        margin: auto;
+        .productSectionTitle {
+            font-size: 32px;
+            line-height: 1.3em;
+            margin: 16px 0;
+            font-weight: 400;
+            font-family: Lora;
+            .productSectionText {
+                font-size: 18px !important;
+                margin: 16px 0;
+                line-height: 1.3em;
+            }
+        }
+        .productSectionTitle span {
+            color: #039869 !important;
+        }
+        .centered {
+            text-align: center;
+        }
+        .productSectionText {
+            font-size: 18px;
+            margin: 16px 0;
+            line-height: 1.3em;
+        }
+    }
+}
+.productWhyBloatingGrid {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    img {
+        width: 100%;
+    }
+}
+.productWhyBloatingCell {
+    border-radius: 6px;
+    overflow: hidden;
+}
+.productWhyBloatingCell div img,
+.productWhyBloatCellIn {
+    min-height: 150px;
+}
+
+.productWhyBloatCellIn {
+    padding: 16px;
+    text-align: center;
+    background: #f7f7f7;
+    p {
+        margin: 0;
+        line-height: 1.3em;
+        font-size: 16px;
+    }
+}
+.productWhyBloatingGrid > div {
+    width: 100%;
+}
+.productWhyNoteImg {
+    width: 100%;
+    max-width: 920px;
+    margin: auto;
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+.productArrowImg {
+    display: block;
+    width: 100%;
+    max-width: 48px;
+    margin: 24px auto;
+}

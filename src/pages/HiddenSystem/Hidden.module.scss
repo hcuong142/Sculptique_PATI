@@ -1,0 +1,298 @@
+.productJudgeOuter {
+    padding-top: 0;
+    margin-top: -16px;
+    padding-bottom: 0;
+    .pageWidth {
+        max-width: 1340px !important;
+        margin: 0 auto;
+    }
+    .productJudgeContainer.topPadding {
+        margin-bottom: 40px;
+    }
+    .productJudgeContainer {
+        max-width: 800px;
+        margin: auto;
+        .productSectionTitle {
+            font-size: 32px;
+            line-height: 1.3em;
+            margin: 16px 0;
+            font-weight: 400;
+            font-family: Lora;
+            span {
+                color: #039869 !important;
+            }
+        }
+        .centered {
+            text-align: center;
+        }
+        .productSectionText {
+            font-size: 18px;
+            margin: 16px 0;
+            line-height: 1.3em;
+        }
+    }
+}
+.pliFlex {
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    img {
+        display: block;
+        width: 100%;
+    }
+    .pliPinkText {
+        margin: 24px 0;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background: #ffe3e3;
+    }
+    .pliTopText *,
+    .pliPinkText *,
+    .pliBottomText * {
+        font-size: 18px;
+        line-height: 1.3em;
+        margin: 8px 0;
+    }
+    .pliTopText ul {
+        padding-left: 0;
+        margin-left: 0;
+    }
+    .pliTopText li {
+        padding-left: 32px;
+        color: #0c7c00;
+        background-image: url('https://trysculptique.com/cdn/shop/files/check-mark_17013456_2_1.png?v=1760702838');
+        background-size: 20px;
+        background-repeat: no-repeat;
+        list-style: none;
+        font-weight: 600;
+        font-family: Nunito;
+    }
+    .pliBottomText li,
+    .pliPinkText li {
+        padding-left: 32px;
+        color: #a60003;
+        background-image: url('https://trysculptique.com/cdn/shop/files/Vector_7.png?v=1760702839');
+        background-size: 20px;
+        background-repeat: no-repeat;
+        list-style: none;
+        font-weight: 600;
+        font-family: Nunito;
+    }
+}
+.pliFlex > div {
+    width: 100%;
+}
+
+.productJudgeOuter.outerHowNothing {
+    padding-top: 0;
+}
+.outerHowNothing {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1c1b1b;
+    margin-bottom: 35px;
+    background-color: #f7f2e7;
+    padding: 70px 0;
+    font-family: Inter, sans-serif;
+    text-align: center;
+}
+.productWhyBloatingGrid {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+}
+.productWhyNothingCell {
+    border-radius: 6px;
+    overflow: hidden;
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+.productWhyNothingCellIn {
+    background: #f7f7f7;
+    padding: 24px;
+    text-align: center;
+    h4 {
+        font-size: 20px;
+        line-height: 1.3em;
+        margin: 0;
+    }
+}
+.productWhyNothingPink {
+    background: #ffe3e3;
+    padding: 8px 16px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 24px;
+    min-height: 180px;
+}
+.productWhyNothingSubtitle {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1.3em;
+    font-weight: 600;
+    img {
+        max-width: 24px;
+    }
+}
+.productWhyNothingText {
+    font-size: 16px;
+    line-height: 1.3em;
+    margin: 12px 0 0;
+}
+.productWhyBloatingGrid > div {
+    width: 100%;
+}
+.productWhyNoteImg {
+    width: 100%;
+    max-width: 920px;
+    margin: auto;
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+.centered {
+    text-align: center;
+}
+.productPrimaryBtn {
+    font-family: Nunito;
+    display: inline-block;
+    padding: 18px 80px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff !important;
+    background: #000;
+    border-radius: 4px;
+    font-size: 18px;
+    transition: all 0.2s;
+    line-height: 1.3em;
+    text-align: center;
+}
+.productPrimaryBtnFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 16px;
+    line-height: 1.3em;
+    margin: 16px 0 0;
+    img {
+        width: 24px !important;
+    }
+}
+
+.productJudgeOuter.pink {
+    background: #f3eee0 !important;
+    padding: 32px 0;
+}
+.productIconsGrid {
+    display: flex;
+    gap: 24px;
+    img {
+        width: auto;
+        height: 40px;
+        max-width: 40px;
+        display: block;
+        margin: auto auto 16px;
+    }
+    p {
+        font-size: 16px;
+        margin: 0;
+        line-height: 1.3em;
+    }
+}
+.productJudgeOuter p.h4title {
+    margin: 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3em;
+}
+.productIconsGrid > div {
+    width: 100%;
+    text-align: center;
+}
+.productExpertOuter {
+    display: flex;
+    background: #f7f7f7;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.productExpertOuter > div {
+    width: 100%;
+}
+.productExpertContent {
+    padding: 32px;
+}
+.productSubtitle {
+    font-size: 16px;
+    line-height: 1.3em;
+    margin: 0;
+    color: #737373;
+}
+.productSectionTitle {
+    font-size: 32px;
+    line-height: 1.3em;
+    margin: 16px 0;
+    font-weight: 400;
+    font-family: Lora;
+}
+.productText p {
+    font-size: 18px;
+    line-height: 1.3em;
+    margin: 12px 0;
+}
+.btnContainer {
+    margin-top: 24px;
+}
+.productPrimaryBtn {
+    font-family: Nunito;
+    display: inline-block;
+    padding: 18px 80px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff !important;
+    background: #000;
+    border-radius: 4px;
+    font-size: 18px;
+    transition: all 0.2s;
+    line-height: 1.3em;
+    text-align: center;
+}
+.productPrimaryBtnFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 16px;
+    line-height: 1.3em;
+    margin: 16px 0 0;
+    img {
+        width: 24px !important;
+    }
+}
+.productExpertMedia {
+    img {
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+}
+.productExpertMedia > div {
+    width: 100%;
+}
+@media screen and (min-width: 750px) {
+    body {
+        font-size: 1.6rem;
+    }
+    .page-width {
+        padding: 0 5rem;
+    }
+}

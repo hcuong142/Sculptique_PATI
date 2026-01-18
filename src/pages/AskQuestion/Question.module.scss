@@ -1,0 +1,192 @@
+.productJudgeOuter {
+    padding: 56px 0px;
+    .pageWidth {
+        max-width: 1340px !important;
+        margin: 0 auto;
+    }
+    .productJudgeContainer.topPadding {
+        margin-bottom: 40px;
+    }
+    .productJudgeContainer {
+        max-width: 800px;
+        margin: auto;
+        .productSectionTitle {
+            font-size: 32px;
+            line-height: 1.3em;
+            margin: 16px 0;
+            font-weight: 400;
+            font-family: Lora;
+            span {
+                color: #039869 !important;
+            }
+        }
+        .centered {
+            text-align: center;
+        }
+        .productSectionText {
+            font-size: 18px;
+            margin: 16px 0;
+            line-height: 1.3em;
+        }
+    }
+}
+.centered {
+    text-align: center;
+}
+.productPrimaryBtn {
+    font-family: Nunito;
+    display: inline-block;
+    padding: 18px 80px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff !important;
+    background: #000;
+    border-radius: 4px;
+    font-size: 18px;
+    transition: all 0.2s;
+    line-height: 1.3em;
+    text-align: center;
+}
+.productPrimaryBtnFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 16px;
+    line-height: 1.3em;
+    margin: 16px 0 0;
+    img {
+        width: 24px !important;
+    }
+}
+.productFaqContainer {
+    background: linear-gradient(180deg, #fff, #f3eee0);
+    max-width: 824px;
+    margin: auto;
+    border-radius: 16px;
+    // background: linear-gradient(180deg, #fff, #f7a0a0bf);
+    overflow: hidden;
+    padding: 32px;
+    .productFaqBox {
+        padding: 20px 24px;
+        cursor: pointer;
+        border-bottom: 1px solid white;
+    }
+    .productFaqThumb {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        cursor: pointer;
+        user-select: none;
+        p {
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.3em;
+        }
+        svg {
+            width: 16px;
+            transition: all 0.2s;
+        }
+    }
+    .productFaqContent {
+        padding-top: 16px;
+        // padding-top: 0;
+        overflow: hidden;
+        height: 0;
+        transition: height 0.7s ease;
+        p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.3em;
+        }
+        // &.open {
+        //     padding-top: 16px;
+        // }
+    }
+    .arrowWrapper {
+        transition: transform 0.7s ease;
+        display: flex;
+        align-items: center;
+    }
+}
+.productStatsOuter {
+    display: flex;
+    align-items: center;
+    img {
+        width: 100%;
+    }
+    .productExpertContent {
+        padding: 32px;
+
+        .productSectionTitle {
+            font-size: 32px;
+            line-height: 1.3em;
+            margin: 16px 0;
+            font-weight: 400;
+            font-family: Lora;
+        }
+    }
+    .productText {
+        p {
+            font-size: 18px;
+            line-height: 1.3em;
+            margin: 12px 0;
+        }
+    }
+
+    .productExpertMedia {
+        img {
+            object-fit: cover;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+    }
+}
+.productStatsOuter > div:nth-child(1) {
+    width: 100%;
+}
+.productStatsOuter > div:nth-child(2) {
+    width: 70%;
+}
+.productTextImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    img {
+        width: 100%;
+    }
+}
+.productTextImage > div {
+    width: 100%;
+}
+.btnContainer {
+    max-width: 495px;
+}
+.productTextImageReviews {
+    max-width: 350px;
+}
+.productSectionTitle {
+    font-size: 32px;
+    line-height: 1.3em;
+    margin: 16px 0;
+    font-weight: 400;
+    font-family: Lora;
+}
+.productText {
+    p {
+        font-size: 18px;
+        line-height: 1.3em;
+        margin: 12px 0;
+    }
+}
+.productTextImagePoints {
+    padding: 1px 0;
+}
+@media screen and (min-width: 750px) {
+    .page-width {
+        padding: 0 5rem;
+    }
+}

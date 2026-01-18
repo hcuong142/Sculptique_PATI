@@ -296,3 +296,537 @@
         padding: 0 5rem;
     }
 }
+.productUgcStars {
+    max-width: 300px;
+    margin: auto auto 16px;
+    display: block;
+}
+.productUgcContainer {
+    margin-bottom: 40px !important;
+}
+.slickSlider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+.slickDotted.slickSlider {
+    margin-bottom: 30px;
+}
+.slickPrev {
+    left: -25px;
+}
+.slickNext {
+    right: -25px;
+}
+.slickNext,
+.slickPrev {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: 0;
+    background: 0 0;
+}
+.productCarouselOuter .slickNext,
+.productCarouselOuter .slickPrev {
+    display: none !important;
+}
+.slickTrack {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.slickSlider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+// .slickSlider .slickList,
+.slickSlider .slickTrack {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.productUgcContainer .slickSlide
+// .productReview-container .slickSlide
+{
+    padding: 8px;
+}
+.slickInitialized .slickSlide {
+    display: block;
+}
+.slickSlide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    img {
+        display: block;
+    }
+}
+.productUgcVideo {
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    img {
+        width: 100%;
+    }
+    video {
+        width: 100%;
+        object-fit: cover;
+        aspect-ratio: 9 / 16;
+        height: 100%;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+}
+.productUgcVideo img.productUgcPlay {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: calc(50% - 16px);
+    left: calc(50% - 16px);
+}
+.productUgcContainer .slickDots
+// .productReviewContainer .slickDots
+{
+    width: 100%;
+    max-width: calc(100% - 200px);
+    display: flex;
+    gap: 0;
+    li {
+        margin: 0;
+        width: 100%;
+    }
+}
+// .slickDots {
+//     // position: absolute;
+//     bottom: -25px;
+//     display: block;
+//     width: 100%;
+//     padding: 0;
+//     margin: 0;
+//     list-style: none;
+//     text-align: center;
+//     li {
+//         position: relative;
+//         display: inline-block;
+//         width: 20px;
+//         height: 20px;
+//         margin: 0 5px;
+//         padding: 0;
+//         cursor: pointer;
+//     }
+// }
+
+.slickDots {
+    position: relative;
+    margin: 16px 0 0 0; // Khoảng cách từ carousel xuống dots
+    padding: 0;
+    list-style: none;
+    text-align: left; // Sát trái như bạn muốn
+    display: flex;
+    gap: 8px; // Khoảng cách giữa các dot
+    width: 100%;
+    max-width: none;
+
+    li {
+        width: 12px !important;
+        height: 12px !important;
+        margin: 0 !important;
+        padding: 0;
+        cursor: pointer;
+
+        button {
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50%;
+            background: #d1d1d1; // Xám nhạt mặc định
+            border: none;
+            font-size: 0; // Ẩn số (chỉ chấm tròn)
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        &.slick-active {
+            button {
+                background: #00c853 !important; // Xanh nổi bật cho active
+                transform: scale(1.4); // To hơn
+                box-shadow: 0 0 6px rgba(0, 200, 83, 0.6);
+            }
+        }
+    }
+}
+
+.slickDots li button {
+    font-size: 12px !important;
+    color: white;
+    background: #d1d1d1;
+    border-radius: 50%;
+    width: 24px !important;
+    height: 24px !important;
+    line-height: 24px !important;
+    text-align: center;
+
+    &.slick-active {
+        background: #00c853 !important;
+        color: white;
+        font-weight: bold;
+    }
+}
+
+.productUgcContainer .slickDots {
+    justify-content: flex-start;
+    padding-left: 0;
+}
+.productUgcCarouselNav {
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    align-items: center;
+    margin-top: -50px;
+    img {
+        width: 100%;
+        max-width: 32px;
+    }
+}
+.productCarouselPrev,
+.productCarouselNext {
+    cursor: pointer;
+}
+// .progressBar {
+//     position: relative;
+//     height: 4px;
+//     background: #ddd; /* Thanh xám */
+//     border-radius: 2px;
+//     overflow: hidden;
+// }
+
+// .progressFill {
+//     height: 100%;
+//     background: #00c853; /* Thanh xanh như hình */
+//     transition: width 0.3s ease;
+//     position: relative;
+// }
+
+// .progressFill::after {
+//     content: '';
+//     position: absolute;
+//     right: -4px;
+//     top: -2px;
+//     width: 8px;
+//     height: 8px;
+//     background: white; /* Dot trắng */
+//     border-radius: 50%;
+//     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+// }
+
+.customDots {
+    display: flex !important;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 0;
+    list-style: none;
+
+    li {
+        width: auto !important;
+        height: auto !important;
+        margin: 0 4px !important;
+
+        button {
+            width: 40px !important; // độ dài mỗi mốc
+            height: 4px !important;
+            padding: 0 !important;
+            background: #e0e0e0 !important; // thanh xám
+            border: none !important;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: #00c853; // xanh lá
+                transition: width 0.4s ease;
+            }
+
+            &.slick-active {
+                background: transparent !important;
+
+                &::before {
+                    width: 100%;
+                }
+
+                .dot {
+                    background: white;
+                    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+                }
+            }
+        }
+    }
+}
+
+.dotWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.dotLine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: inherit;
+}
+
+.dot {
+    position: absolute;
+    right: -6px;
+    top: -4px;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    border: 2px solid #00c853;
+    transition: all 0.3s;
+}
+.productLymphIngrTable {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background: #fff;
+    border-radius: 12px;
+    border: 0.5px solid black;
+    overflow: hidden;
+    .productLymphIngredient {
+        border: 0.5px solid black;
+        padding: 24px;
+        cursor: pointer;
+    }
+    .productLymphIngrSubtitle {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        align-items: center;
+        font-size: 16px;
+        color: #0c7c00;
+        margin: 0;
+        img {
+            max-width: 16px;
+            display: block;
+        }
+    }
+    .productLymphMainImg {
+        display: block;
+        max-width: 120px;
+        margin: 12px auto;
+        max-height: 80px;
+        width: auto !important;
+    }
+    .productLymphIngrThumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: space-between;
+        h5 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.3em;
+        }
+        img {
+            max-width: 24px;
+            display: block;
+            margin-left: auto;
+        }
+    }
+    .productLymphIngrContent {
+        padding-top: 12px;
+        display: none;
+        p {
+            margin: 0;
+            line-height: 1.3em;
+            font-size: 14px;
+        }
+    }
+}
+.productJudgeOuter.productLymphgIngrOuter img {
+    width: 100%;
+}
+.productLymphIngrTableSmall {
+    max-width: 580px;
+    margin: 40px auto auto;
+    img {
+        width: 100%;
+    }
+}
+.productReviewsTrust {
+    display: block;
+    margin: auto;
+    max-width: 200px;
+}
+.jdgmWidget.jdgmRevWidg {
+    display: block;
+}
+.jdgmRevWidg {
+    padding: 24px 16px;
+    margin: 0;
+    border: none;
+    .jdgmRevWidgHeader {
+        text-align: center;
+    }
+    .jdgmRevWidgTitle {
+        visibility: unset;
+        margin-bottom: 12px;
+        margin-top: 0;
+        font-size: 150%;
+    }
+    .jdgmFromWrapper {
+        padding: 24px 0;
+        border-top: 1px solid rgba(16, 132, 116, 0.1);
+        border-color: rgba(250, 138, 138, 0.1);
+    }
+    .jdgmRowMedia {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+    }
+    .jdgmFromDynamicWrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1050;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+@media only screen and (min-width: 992px) {
+    .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgmReviewWidgetMedium) .jdgmRevWidgTitle {
+        margin-bottom: 24px;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgmReviewWidgetMedium) .jdgmRowStars {
+        padding-bottom: 24px;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgmReviewWidgetMedium) .jdgmRowMedia {
+        flex-direction: row;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgmReviewWidgetMedium) .jdgmRowStars > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgmReviewWidgetMedium) .jdgmRevWidgSummary {
+        width: 30%;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgmReviewWidgetMedium) .jdgmRevWidgSummary,
+    .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgmReviewWidgetMedium) .jdgmHistogram,
+    .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgmReviewWidgetMedium) .jdgmWidgetActionsWrapper {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+}
+.jdgmRevWidgSummary,
+.jdgmHistogram,
+.jdgmWidgetActionsWrapper {
+    margin: 0 0 24px 0;
+}
+@media only screen and (min-width: 992px) {
+    .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgmReviewWidgetMedium) .jdgmRevWidgSummaryInner {
+        display: inline-block;
+        text-align: left;
+    }
+}
+.jdgmRevWidgSummary .jdgmStar {
+    font-size: 16px;
+}
+.jdgmRevWidg .jdgmStar,
+.jdgmRevsTab .jdgmStar,
+.jdgmAllReviews .jdgmStar,
+.jdgmGalleryPopup .jdgmStar {
+    color: #108474;
+    color: #fa8a8a;
+}
+.jdgmStar.jdgmOn:before {
+    content: '\e000';
+}
+.jdgmStar.jdgmHalf:before {
+    content: '\e002';
+}
+.jdgmStar {
+    display: inline !important;
+    text-decoration: none !important;
+    padding: 0 4px 0 0 !important;
+    margin: 0 !important;
+    font-weight: bold;
+    opacity: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'JudgemeStar' !important;
+}
+.jdgmWidget * {
+    margin: 0;
+    line-height: 1.4;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+}

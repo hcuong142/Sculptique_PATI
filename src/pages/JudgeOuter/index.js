@@ -3,7 +3,7 @@ import styles from './JudgeOuter.module.scss';
 export const JudgeOuter = () => {
     return (
         <div className={`${styles.productJudgeOuter} ${styles.outerMyBloating}`}>
-            <div className={styles.pageWidth}>
+            <div className={styles.pageWidth} style={{padding: '0 49px'}}>
                 <div className={styles.productJudgeContainer}>
                     <h2 className={`${styles.productSectionTitle} ${styles.centered}`}>Why Your <span>Bloating, Brain Fog &amp; Swollen Legs</span> Are Actually Connected</h2>
                     <p className={`${styles.productSectionText} ${styles.centered}`}>If you're experiencing more than one of these symptoms, your body is trying to tell you something:</p>

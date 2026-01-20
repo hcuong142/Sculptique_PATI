@@ -1653,3 +1653,7 @@ input[type='submit'].jdgmBtnSolid {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
+.jdgmHistogramRow:hover,
+.jdgmHistogramRowSelected {
+    opacity: 0.6;
+}

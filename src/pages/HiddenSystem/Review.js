@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Hidden.module.scss';
 
 const initialReviews = [
@@ -68,6 +68,12 @@ const initialReviews = [
     },
     {
         star: 5,
+        content: 'Da tôi mịn hơn hẳn sau 3 tuần dùng, chân cũng bớt sưng. Rất hài lòng!',
+        displayName: 'Nguyễn Thị Lan',
+        day: '01/18/2026',
+    },
+    {
+        star: 5,
         content: 'Love it! 😍',
         displayName: 'Anonymous',
         day: '11/08/2025',
@@ -96,6 +102,150 @@ const initialReviews = [
         displayName: 'Barbara Jean',
         day: '10/16/2025',
     },
+    {
+        star: 4,
+        content:
+            'So far I’ve noticed less swelling in my feet by the end of the day. Haven’t noticed any cellulite repair yet and still have heaviness but not as much.',
+        displayName: 'Erika Wasielewski ',
+        day: '10/15/2025',
+    },
+    {
+        star: 4,
+        content: 'Product is okay, saw some improvement but not as expected.',
+        displayName: 'John Doe',
+        day: '01/10/2026',
+    },
+    {
+        star: 4,
+        content: 'Helped with swelling, but skin smoothness is still the same.',
+        displayName: 'Jane Smith',
+        day: '01/05/2026',
+    },
+    {
+        star: 4,
+        content: 'Good results after two weeks, but could be faster.',
+        displayName: 'Alice Johnson',
+        day: '12/25/2025',
+    },
+    {
+        star: 4,
+        content: 'Reduced heaviness in legs, satisfied overall.',
+        displayName: 'Bob Brown',
+        day: '12/20/2025',
+    },
+    {
+        star: 4,
+        content: 'Not bad, but I expected more from the capsules.',
+        displayName: 'Carol Davis',
+        day: '12/15/2025',
+    },
+    {
+        star: 4,
+        content: 'Saw minor changes, will continue using.',
+        displayName: 'David Evans',
+        day: '12/10/2025',
+    },
+    {
+        star: 4,
+        content: 'Helps with daily comfort, but not a miracle.',
+        displayName: 'Eve Foster',
+        day: '12/05/2025',
+    },
+    {
+        star: 4,
+        content: 'Improved skin texture slightly.',
+        displayName: 'Frank Green',
+        day: '11/30/2025',
+    },
+    {
+        star: 4,
+        content: 'Decent product for the price.',
+        displayName: 'Grace Harris',
+        day: '11/25/2025',
+    },
+    {
+        star: 4,
+        content: 'Noticeable difference in swelling reduction.',
+        displayName: 'Henry Irving',
+        day: '11/20/2025',
+    },
+
+    {
+        star: 3,
+        content:
+            'So far I’ve noticed less swelling in my feet by the end of the day. Haven’t noticed any cellulite repair yet and still have heaviness but not as much.',
+        displayName: 'Cuong ',
+        day: '10/15/2025',
+    },
+    {
+        star: 3,
+        content: 'Product is okay, saw some improvement but not as expected.',
+        displayName: 'John Doe',
+        day: '01/10/2026',
+    },
+    {
+        star: 3,
+        content: 'Helped with swelling, but skin smoothness is still the same.',
+        displayName: 'Jane Smith',
+        day: '01/05/2026',
+    },
+    {
+        star: 3,
+        content: 'Good results after two weeks, but could be faster.',
+        displayName: 'Alice Johnson',
+        day: '12/25/2025',
+    },
+    {
+        star: 3,
+        content: 'Reduced heaviness in legs, satisfied overall.',
+        displayName: 'Bob Brown',
+        day: '12/20/2025',
+    },
+    {
+        star: 3,
+        content: 'Not bad, but I expected more from the capsules.',
+        displayName: 'Carol Davis',
+        day: '12/15/2025',
+    },
+    {
+        star: 3,
+        content: 'Saw minor changes, will continue using.',
+        displayName: 'David Evans',
+        day: '12/10/2025',
+    },
+    {
+        star: 3,
+        content: 'Helps with daily comfort, but not a miracle.',
+        displayName: 'Eve Foster',
+        day: '12/05/2025',
+        pictures: [
+            'https://judgeme.imgix.net/sculptique/1752663679__1752663592120-image__original.jpg?auto=format&w=160',
+        ],
+    },
+    {
+        star: 3,
+        content: 'Improved skin texture slightly.',
+        displayName: 'Frank Green',
+        day: '11/30/2025',
+    },
+    {
+        star: 3,
+        content: 'Decent product for the price.',
+        displayName: 'Grace Harris',
+        day: '11/25/2025',
+    },
+    {
+        star: 3,
+        content: 'Noticeable difference in swelling reduction.',
+        displayName: 'Henry Irving',
+        day: '11/20/2025',
+    },
+    {
+        star: 2,
+        content: 'Not seeing much improvement, might stop using.',
+        displayName: 'Ivy Jackson',
+        day: '11/15/2025',
+    },
 ];
 
 export const Review = () => {
@@ -104,20 +254,155 @@ export const Review = () => {
     const [isWritingReview, setIsWritingReview] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const [newReview, setNewReview] = useState(null);
-
     const [rating, setRating] = useState(0);
     const [reviewBody, setReviewBody] = useState('');
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [allReviews, setAllReviews] = useState(initialReviews);
+    const [filterRating, setFilterRating] = useState(null);
 
+    const [sortOption, setSortOption] = useState('most-recent');
+
+    // const getSortedReviews = () => {
+    //     let reviews = [...allReviews]; // copy để không thay đổi mảng gốc
+
+    //     // Bước 1: Filter theo sao (nếu đang filter star cụ thể)
+    //     if (filterRating !== null) {
+    //         reviews = reviews.filter((rev) => rev.star === filterRating);
+    //     }
+
+    //     // Bước 2: Áp dụng sort theo dropdown
+    //     switch (sortOption) {
+    //         case 'most-recent':
+    //             // Sort theo ngày mới nhất trước (giảm dần)
+    //             reviews.sort((a, b) => new Date(b.day) - new Date(a.day));
+    //             break;
+
+    //         case 'highest-rating':
+    //             // Star cao nhất lên đầu (5 → 1)
+    //             reviews.sort((a, b) => b.star - a.star);
+    //             break;
+
+    //         case 'lowest-rating':
+    //             // Star thấp nhất lên đầu (1 → 5)
+    //             reviews.sort((a, b) => a.star - b.star);
+    //             break;
+
+    //         case 'only-pictures':
+    //             // Chỉ giữ lại review CÓ picture
+    //             reviews = reviews.filter((rev) => rev.pictures && rev.pictures.length > 0);
+    //             break;
+
+    //         case 'pictures-first':
+    //             // Nhóm có picture lên đầu, không picture xuống sau
+    //             // Giữ nguyên thứ tự tương đối trong từng nhóm
+    //             const withPictures = reviews.filter((rev) => rev.pictures && rev.pictures.length > 0);
+    //             const withoutPictures = reviews.filter((rev) => !rev.pictures || rev.pictures.length === 0);
+    //             reviews = [...withPictures, ...withoutPictures];
+    //             break;
+
+    //         default:
+    //             // Không sort gì thêm
+    //             break;
+    //     }
+
+    //     return reviews;
+    // };
+
+    const getSortedReviews = () => {
+        let reviews = [...allReviews];
+
+        // Bước 1: Filter theo sao (nếu có)
+        if (filterRating !== null) {
+            reviews = reviews.filter((rev) => rev.star === filterRating);
+        }
+
+        // Bước 2: Áp dụng sort/filter theo option
+        switch (sortOption) {
+            case 'most-recent':
+                reviews.sort((a, b) => new Date(b.day) - new Date(a.day));
+                break;
+
+            case 'highest-rating':
+                reviews.sort((a, b) => b.star - a.star);
+                break;
+
+            case 'lowest-rating':
+                reviews.sort((a, b) => a.star - b.star);
+                break;
+
+            case 'only-pictures':
+                // CHẶT CHẼ: chỉ giữ review có pictures là array VÀ length > 0
+                reviews = reviews.filter((rev) => {
+                    const pics = rev.pictures;
+                    return Array.isArray(pics) && pics.length > 0;
+                });
+                break;
+
+            case 'pictures-first':
+                const withPictures = reviews.filter((rev) => {
+                    const pics = rev.pictures;
+                    return Array.isArray(pics) && pics.length > 0;
+                });
+                const withoutPictures = reviews.filter((rev) => {
+                    const pics = rev.pictures;
+                    return !Array.isArray(pics) || pics.length === 0;
+                });
+                reviews = [...withPictures, ...withoutPictures];
+                break;
+
+            default:
+                break;
+        }
+
+        return reviews;
+    };
     const [currentPage, setCurrentPage] = useState(1);
     const reviewsPerPage = 5;
-    const totalPages = Math.ceil(allReviews.length / reviewsPerPage);
+    const sortedReviews = getSortedReviews();
+    const filteredReviews = sortedReviews;
+    // const filteredReviews = filterRating === null ? allReviews : allReviews.filter((rev) => rev.star === filterRating);
+    const totalPages = Math.ceil(filteredReviews.length / reviewsPerPage);
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
-    const currentReviews = allReviews.slice(indexOfFirstReview, indexOfLastReview);
+    const currentReviews = filteredReviews.slice(indexOfFirstReview, indexOfLastReview);
+    const [selectedRating, setSelectedRating] = useState(null);
+    const handleSortChange = (e) => {
+        setSortOption(e.target.value);
+        setCurrentPage(1); // reset về trang 1 khi thay đổi sort
+    };
+    const [isLoading, setIsLoading] = useState(false);
+    const simulateLoading = () => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve();
+            }, 600); // 900ms – bạn có thể đổi thành 1200 hoặc random 800-1500
+        });
+    };
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [filterRating]);
+
+    const freqMap = {
+        5: { freq: 85, perc: 77 },
+        4: { freq: 17, perc: 15 },
+        3: { freq: 8, perc: 7 },
+        2: { freq: 1, perc: 1 },
+        1: { freq: 0, perc: 0 },
+    };
+
+    // 3. Hàm handleFilterClick (bỏ type, dùng async bình thường)
+    const handleFilterClick = async (rating) => {
+        setIsLoading(true);
+        await simulateLoading(); // hàm giả lập loading từ trước (nếu có)
+
+        setFilterRating(rating);
+        setSelectedRating(rating); // rating sẽ là number hoặc null
+        setCurrentPage(1);
+
+        setIsLoading(false);
+    };
 
     const handleWriteReview = (e) => {
         e.preventDefault();
@@ -210,23 +495,20 @@ export const Review = () => {
 
         // Giả lập submit thành công
         const newReview = {
-            body: reviewBody.trim(),
-            author: displayName.trim(),
-            content: reviewBody.trim(), // ← key là content
+            star: rating,
+            content: reviewBody.trim(),
             displayName: displayName.trim(),
-            date: new Date().toLocaleDateString('en-US', {
+            day: new Date().toLocaleDateString('en-US', {
                 month: '2-digit',
                 day: '2-digit',
                 year: 'numeric',
-            }), // format MM/DD/YYYY giống review cứng
-            rating: rating,
+            }),
             // Nếu sau này có media thật thì thêm vào đây
         };
 
         setAllReviews([newReview, ...allReviews]);
         setIsSubmitted(true);
         setCurrentPage(1);
-        // setIsWritingReview(false); // ẩn form
 
         // Reset form (nếu mở lại)
         setRating(0);
@@ -297,144 +579,55 @@ export const Review = () => {
                                     </div>
 
                                     <div className={`${styles.jdgmHistogram} ${styles.jdgmTempHidden}`}>
-                                        <div
-                                            className={styles.jdgmHistogramRow}
-                                            data-rating="5"
-                                            data-frequency="85"
-                                            data-percentage="77"
-                                        >
-                                            <div
-                                                className={styles.jdgmHistogramStar}
-                                                role="button"
-                                                aria-label="77% (85) reviews with 5 star rating"
-                                                tabindex="0"
-                                            >
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                            </div>
-                                            <div className={styles.jdgmHistogramBar}>
+                                        {[5, 4, 3, 2, 1].map((rating) => {
+                                            const data = freqMap[rating] || { freq: 0, perc: 0 };
+                                            const { freq, perc } = data;
+
+                                            return (
                                                 <div
-                                                    className={styles.jdgmHistogramBarContent}
-                                                    style={{ width: '77%' }}
-                                                ></div>
-                                            </div>
-                                            <div className={styles.jdgmHistogramFrequency}>85</div>
-                                        </div>
-                                        <div
-                                            className={styles.jdgmHistogramRow}
-                                            data-rating="4"
-                                            data-frequency="17"
-                                            data-percentage="15"
-                                        >
+                                                    key={rating}
+                                                    className={`${styles.jdgmHistogramRow} ${
+                                                        selectedRating === rating ? styles.jdgmHistogramRowSelected : ''
+                                                    }`}
+                                                    data-rating={rating}
+                                                    data-frequency={freq}
+                                                    data-percentage={perc}
+                                                    onClick={() => handleFilterClick(rating)}
+                                                >
+                                                    <div
+                                                        className={styles.jdgmHistogramStar}
+                                                        role="button"
+                                                        tabIndex={0}
+                                                    >
+                                                        {[...Array(5)].map((_, i) => (
+                                                            <span
+                                                                key={i}
+                                                                className={`${styles.jdgmStar} ${i < rating ? styles.jdgmOn : styles.jdgmOff}`}
+                                                            />
+                                                        ))}
+                                                    </div>
+                                                    <div className={styles.jdgmHistogramBar}>
+                                                        <div
+                                                            className={styles.jdgmHistogramBarContent}
+                                                            style={{ width: `${perc}%` }}
+                                                        />
+                                                    </div>
+                                                    <div className={styles.jdgmHistogramFrequency}>{freq}</div>
+                                                </div>
+                                            );
+                                        })}
+                                        {filterRating !== null && (
                                             <div
-                                                className={styles.jdgmHistogramStar}
-                                                role="button"
-                                                aria-label="15% (17) reviews with 4 star rating"
-                                                tabindex="0"
+                                                className={`${styles.jdgmHistogramRow} ${styles.jdgmHistogramClearFilter}`}
+                                                data-rating="null"
+                                                onClick={() => handleFilterClick(null)} // reset về all
+                                                style={{
+                                                    display: 'block',
+                                                }}
                                             >
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
+                                                See all reviews
                                             </div>
-                                            <div className={styles.jdgmHistogramBar}>
-                                                <div
-                                                    className={styles.jdgmHistogramBarContent}
-                                                    style={{ width: '15%' }}
-                                                ></div>
-                                            </div>
-                                            <div className={styles.jdgmHistogramFrequency}>17</div>
-                                        </div>
-                                        <div
-                                            className={styles.jdgmHistogramRow}
-                                            data-rating="3"
-                                            data-frequency="8"
-                                            data-percentage="7"
-                                        >
-                                            <div
-                                                className={styles.jdgmHistogramStar}
-                                                role="button"
-                                                aria-label="7% (8) reviews with 3 star rating"
-                                                tabindex="0"
-                                            >
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
-                                            </div>
-                                            <div className={styles.jdgmHistogramBar}>
-                                                <div
-                                                    className={styles.jdgmHistogramBarContent}
-                                                    style={{ width: '7%' }}
-                                                ></div>
-                                            </div>
-                                            <div className={styles.jdgmHistogramFrequency}>8</div>
-                                        </div>
-                                        <div
-                                            className={styles.jdgmHistogramRow}
-                                            data-rating="2"
-                                            data-frequency="1"
-                                            data-percentage="1"
-                                        >
-                                            <div
-                                                className={styles.jdgmHistogramStar}
-                                                role="button"
-                                                aria-label="1% (1) reviews with 2 star rating"
-                                                tabindex="0"
-                                            >
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
-                                            </div>
-                                            <div className={styles.jdgmHistogramBar}>
-                                                <div
-                                                    className={styles.jdgmHistogramBarContent}
-                                                    style={{ width: '1%' }}
-                                                ></div>
-                                            </div>
-                                            <div className={styles.jdgmHistogramFrequency}>1</div>
-                                        </div>
-                                        <div
-                                            className={styles.jdgmHistogramRow}
-                                            data-rating="1"
-                                            data-frequency="0"
-                                            data-percentage="0"
-                                        >
-                                            <div
-                                                className={styles.jdgmHistogramStar}
-                                                role="button"
-                                                aria-label="0% (0) reviews with 15 star rating"
-                                                tabindex="0"
-                                            >
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOff}`}></span>
-                                            </div>
-                                            <div className={styles.jdgmHistogramBar}>
-                                                <div
-                                                    className={styles.jdgmHistogramBarContent}
-                                                    style={{ width: '0%' }}
-                                                ></div>
-                                            </div>
-                                            <div className={styles.jdgmHistogramFrequency}>0</div>
-                                        </div>
-                                        <div
-                                            className={`${styles.jdgmHistogramRow} ${styles.jdgmHistogramClearFilter}`}
-                                            data-rating="null"
-                                            tabindex="0"
-                                            style={{ display: 'block' }}
-                                        >
-                                            See all reviews
-                                        </div>
+                                        )}
                                     </div>
 
                                     <div className={styles.jdgmWidgetActionsWrapper}>
@@ -475,7 +668,6 @@ export const Review = () => {
                                         )}
                                     </div>
                                 </div>
-
                                 {isWritingReview && (
                                     <div className={styles.jdgmFromWrapper}>
                                         {isSubmitted ? (
@@ -510,44 +702,7 @@ export const Review = () => {
 
                                                     <div className={styles.jdgmFormFieldset} aria-label="Rating">
                                                         <label>Rating</label>
-                                                        {/* <span className={styles.jdgmFormRating} style={{ cursor: 'pointer' }}>
-                                                    <a
-                                                        data-alt="1"
-                                                        className={`${styles.jdgmStar} ${styles.jdgmOff}`}
-                                                        title="1 star"
-                                                        role="button"
-                                                        aria-label="1 star"
-                                                    ></a>
-                                                    <a
-                                                        data-alt="2"
-                                                        className={`${styles.jdgmStar} ${styles.jdgmOff}`}
-                                                        title="2 stars"
-                                                        role="button"
-                                                        aria-label="2 stars"
-                                                    ></a>
-                                                    <a
-                                                        data-alt="3"
-                                                        className={`${styles.jdgmStar} ${styles.jdgmOff}`}
-                                                        title="3 stars"
-                                                        role="button"
-                                                        aria-label="3 stars"
-                                                    ></a>
-                                                    <a
-                                                        data-alt="4"
-                                                        className={`${styles.jdgmStar} ${styles.jdgmOff}`}
-                                                        title="4 stars"
-                                                        role="button"
-                                                        aria-label="4 stars"
-                                                    ></a>
-                                                    <a
-                                                        data-alt="5"
-                                                        className={`${styles.jdgmStar} ${styles.jdgmOff}`}
-                                                        title="5 stars"
-                                                        role="button"
-                                                        aria-label="5 stars"
-                                                    ></a>
-                                                    <input name="score" type="hidden" />
-                                                </span> */}
+
                                                         <span
                                                             className={styles.jdgmFormRating}
                                                             style={{ cursor: 'pointer' }}
@@ -883,7 +1038,15 @@ export const Review = () => {
                             <div className={styles.jdgmRowActions}>
                                 <div className={styles.jdgmRevWidgSortWrapper}>
                                     <div className={styles.jdgmSortDropdownWrapper}>
-                                        <select className={styles.jdgmSortDropdown} aria-label="Sort dropdown">
+                                        <select
+                                            className={styles.jdgmSortDropdown}
+                                            aria-label="Sort dropdown"
+                                            onChange={(e) => {
+                                                setSortOption(e.target.value);
+                                                setCurrentPage(1);
+                                            }}
+                                            value={sortOption}
+                                        >
                                             <option value="most-recent">Most Recent</option>
                                             <option value="highest-rating">Highest Rating</option>
                                             <option value="lowest-rating">Lowest Rating</option>
@@ -896,48 +1059,8 @@ export const Review = () => {
                                     </div>
                                 </div>
                             </div>
-
-                            <div className={styles.jdgmRevWidgBody}>
+                            <div className={styles.jdgmRevWidgBody} style={{ display: isLoading ? 'none' : 'block' }}>
                                 <div className={styles.jdgmRevWidgReviews}>
-                                    {/* {newReview && (
-                                        <div
-                                            className={`${styles.jdgmRev} ${styles.jdgmDividerTop} ${styles.jdgmDoneSetup}`}
-                                        >
-                                            <div className={styles.jdgmRevHeader}>
-                                                <div className={styles.jdgmRowRating}>
-                                                    <span
-                                                        className={styles.jdgmRevRating}
-                                                        data-score={newReview.rating}
-                                                        tabIndex="0"
-                                                        aria-label={`${newReview.rating} star review`}
-                                                        role="img"
-                                                    >
-                                                        {[...Array(5)].map((_, i) => (
-                                                            <span
-                                                                key={i}
-                                                                className={`${styles.jdgmStar} ${i < newReview.rating ? styles.jdgmOn : styles.jdgmOff}`}
-                                                            ></span>
-                                                        ))}
-                                                    </span>
-                                                    <span className={styles.jdgmRevTimestamp}>{newReview.date}</span>
-                                                </div>
-                                                <div className={styles.jdgmRowProfile}>
-                                                    <div className={styles.jdgmRevIcon}></div>
-                                                    <span className={styles.jdgmRevAuthorWrapper}>
-                                                        <span className={styles.jdgmRevAuthor}>{newReview.author}</span>
-                                                        <span className={styles.jdgmRevBuyerBadgeWrapper}>
-                                                            <span className={styles.jdgmRevBuyerBadge}></span>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className={styles.jdgmRevContent}>
-                                                <div className={styles.jdgmRevBody}>
-                                                    <p>{newReview.body}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )} */}
                                     {currentReviews.map((rev, index) => (
                                         <div
                                             key={index}
@@ -975,6 +1098,28 @@ export const Review = () => {
                                                 <div className={styles.jdgmRevBody}>
                                                     <p>{rev.content}</p>
                                                 </div>
+                                                {rev.pictures && rev.pictures.length > 0 && (
+                                                    <div className={styles.jdgmRevPics}>
+                                                        {rev.pictures.map((picUrl, picIdx) => (
+                                                            <a
+                                                                key={picIdx}
+                                                                className={styles.jdgmRevPicsLink}
+                                                                target="_blank"
+                                                                rel="nofollow noreferrer"
+                                                                href={picUrl.replace('&w=160', '')}
+                                                                data-mfp-src={picUrl.replace('&w=160', '&w=1024')}
+                                                                aria-label={`Link to user picture ${picIdx + 1}`}
+                                                            >
+                                                                <img
+                                                                    className={styles.jdgmRevPicImg}
+                                                                    alt="User picture"
+                                                                    src={picUrl}
+                                                                    data-src={picUrl}
+                                                                />
+                                                            </a>
+                                                        ))}
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     ))}
@@ -982,7 +1127,6 @@ export const Review = () => {
 
                                 {totalPages > 1 && (
                                     <div className={styles.jdgmPaginate} data-per-page="5">
-                                        {/* First Page */}
                                         {currentPage > 1 && (
                                             <a
                                                 className={`${styles.jdgmPaginatePage} ${styles.jdgmPaginateFirstPage}`}
@@ -993,7 +1137,6 @@ export const Review = () => {
                                             ></a>
                                         )}
 
-                                        {/* Prev Page */}
                                         {currentPage > 1 && (
                                             <a
                                                 className={`${styles.jdgmPaginatePage} ${styles.jdgmPaginatePrevPage}`}
@@ -1004,40 +1147,33 @@ export const Review = () => {
                                             ></a>
                                         )}
 
-                                        {/* Page numbers - hiển thị động */}
                                         {(() => {
                                             const pagesToShow = [];
-                                            const maxVisible = 5; // tối đa hiển thị 5 số trang (có thể điều chỉnh)
+                                            const maxVisible = 3; // Giới hạn tối đa 3 số trang
 
-                                            // Luôn hiển thị trang 1
-                                            pagesToShow.push(1);
-
-                                            // Nếu trang hiện tại gần đầu → hiển thị thêm 2,3,4,...
-                                            if (currentPage <= 3) {
-                                                for (let i = 2; i <= Math.min(5, totalPages); i++) {
-                                                    pagesToShow.push(i);
-                                                }
+                                            // Luôn hiển thị trang 1 nếu không gần cuối
+                                            if (currentPage < totalPages - 1) {
+                                                pagesToShow.push(1);
                                             }
-                                            // Nếu trang hiện tại ở giữa → hiển thị ... + các trang lân cận + ...
-                                            else if (currentPage >= totalPages - 2) {
-                                                // Gần cuối → hiển thị ... + (total-3) (total-2) (total-1) total
-                                                for (let i = Math.max(totalPages - 4, 2); i <= totalPages; i++) {
-                                                    pagesToShow.push(i);
-                                                }
+
+                                            // Xử lý trang hiện tại và lân cận
+                                            if (currentPage === 1) {
+                                                pagesToShow.push(1, 2, 3);
+                                            } else if (currentPage === 2) {
+                                                pagesToShow.push(1, 2, 3);
+                                            } else if (currentPage === totalPages) {
+                                                pagesToShow.push(totalPages - 2, totalPages - 1, totalPages);
+                                            } else if (currentPage === totalPages - 1) {
+                                                pagesToShow.push(totalPages - 2, totalPages - 1, totalPages);
                                             } else {
-                                                // Ở giữa → hiển thị ... + (current-1) current (current+1) + ...
-                                                pagesToShow.push(currentPage - 1);
-                                                pagesToShow.push(currentPage);
-                                                pagesToShow.push(currentPage + 1);
+                                                pagesToShow.push(currentPage - 1, currentPage, currentPage + 1);
                                             }
 
-                                            // Luôn hiển thị trang cuối nếu chưa có
-                                            if (totalPages > 1 && !pagesToShow.includes(totalPages)) {
-                                                pagesToShow.push(totalPages);
-                                            }
+                                            // Lọc các trang hợp lệ (không vượt quá totalPages, không âm)
+                                            const validPages = pagesToShow.filter((p) => p >= 1 && p <= totalPages);
 
                                             // Loại bỏ trùng lặp và sắp xếp
-                                            const uniquePages = [...new Set(pagesToShow)].sort((a, b) => a - b);
+                                            const uniquePages = [...new Set(validPages)].sort((a, b) => a - b);
 
                                             return uniquePages.map((pageNum) => (
                                                 <a
@@ -1053,7 +1189,6 @@ export const Review = () => {
                                             ));
                                         })()}
 
-                                        {/* Next Page */}
                                         {currentPage < totalPages && (
                                             <a
                                                 className={`${styles.jdgmPaginatePage} ${styles.jdgmPaginateNextPage}`}
@@ -1064,7 +1199,6 @@ export const Review = () => {
                                             ></a>
                                         )}
 
-                                        {/* Last Page */}
                                         {currentPage < totalPages && (
                                             <a
                                                 className={`${styles.jdgmPaginatePage} ${styles.jdgmPaginateLastPage}`}
@@ -1077,7 +1211,14 @@ export const Review = () => {
                                     </div>
                                 )}
                             </div>
-                            <div className={styles.jdgmRevWidgPaginateSpinner} style={{ display: 'none' }}>
+                            <div
+                                className={styles.jdgmRevWidgPaginateSpinner}
+                                style={{
+                                    display: isLoading ? 'block' : 'none',
+                                    textAlign: 'center',
+                                    padding: '40px 0',
+                                }}
+                            >
                                 <div className={styles.jdgmSpinner}></div>
                             </div>
                         </div>

@@ -68,12 +68,6 @@ const initialReviews = [
     },
     {
         star: 5,
-        content: 'Da tôi mịn hơn hẳn sau 3 tuần dùng, chân cũng bớt sưng. Rất hài lòng!',
-        displayName: 'Nguyễn Thị Lan',
-        day: '01/18/2026',
-    },
-    {
-        star: 5,
         content: 'Love it! 😍',
         displayName: 'Anonymous',
         day: '11/08/2025',
@@ -606,12 +600,14 @@ export const Review = () => {
                                                             />
                                                         ))}
                                                     </div>
+
                                                     <div className={styles.jdgmHistogramBar}>
                                                         <div
                                                             className={styles.jdgmHistogramBarContent}
                                                             style={{ width: `${perc}%` }}
                                                         />
                                                     </div>
+
                                                     <div className={styles.jdgmHistogramFrequency}>{freq}</div>
                                                 </div>
                                             );
@@ -1059,7 +1055,10 @@ export const Review = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.jdgmRevWidgBody} style={{ display: isLoading ? 'none' : 'block' }}>
+                            <div
+                                className={`${styles.jdgmRevWidgBody} ${!isLoading ? styles.visible : ''}`}
+                                style={{ display: isLoading ? 'none' : 'block' }}
+                            >
                                 <div className={styles.jdgmRevWidgReviews}>
                                     {currentReviews.map((rev, index) => (
                                         <div

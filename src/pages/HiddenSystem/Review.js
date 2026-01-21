@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './Hidden.module.scss';
 import { initialReviews } from '~/data/data';
+import { ReactComponent as IconStar } from 'src/assets/icons/star.svg';
+import { ReactComponent as IconStarFull } from 'src/assets/icons/starFill.svg';
+import { ReactComponent as IconStarHalf } from 'src/assets/icons/starHalf.svg';
+import { ReactComponent as IconArrowDown } from 'src/assets/icons/arrowDown.svg';
+import { ReactComponent as IconAvatar } from 'src/assets/icons/ImageAvatar.svg';
+import { ReactComponent as IconDownload } from 'src/assets/icons/IconDownload.svg';
+import { ReactComponent as IconCheck } from 'src/assets/icons/check.svg';
 
 export const Review = () => {
     const [previews, setPreviews] = useState([]);
@@ -17,61 +24,13 @@ export const Review = () => {
 
     const [sortOption, setSortOption] = useState('most-recent');
 
-    // const getSortedReviews = () => {
-    //     let reviews = [...allReviews]; // copy để không thay đổi mảng gốc
-
-    //     // Bước 1: Filter theo sao (nếu đang filter star cụ thể)
-    //     if (filterRating !== null) {
-    //         reviews = reviews.filter((rev) => rev.star === filterRating);
-    //     }
-
-    //     // Bước 2: Áp dụng sort theo dropdown
-    //     switch (sortOption) {
-    //         case 'most-recent':
-    //             // Sort theo ngày mới nhất trước (giảm dần)
-    //             reviews.sort((a, b) => new Date(b.day) - new Date(a.day));
-    //             break;
-
-    //         case 'highest-rating':
-    //             // Star cao nhất lên đầu (5 → 1)
-    //             reviews.sort((a, b) => b.star - a.star);
-    //             break;
-
-    //         case 'lowest-rating':
-    //             // Star thấp nhất lên đầu (1 → 5)
-    //             reviews.sort((a, b) => a.star - b.star);
-    //             break;
-
-    //         case 'only-pictures':
-    //             // Chỉ giữ lại review CÓ picture
-    //             reviews = reviews.filter((rev) => rev.pictures && rev.pictures.length > 0);
-    //             break;
-
-    //         case 'pictures-first':
-    //             // Nhóm có picture lên đầu, không picture xuống sau
-    //             // Giữ nguyên thứ tự tương đối trong từng nhóm
-    //             const withPictures = reviews.filter((rev) => rev.pictures && rev.pictures.length > 0);
-    //             const withoutPictures = reviews.filter((rev) => !rev.pictures || rev.pictures.length === 0);
-    //             reviews = [...withPictures, ...withoutPictures];
-    //             break;
-
-    //         default:
-    //             // Không sort gì thêm
-    //             break;
-    //     }
-
-    //     return reviews;
-    // };
-
     const getSortedReviews = () => {
         let reviews = [...allReviews];
 
-        // Bước 1: Filter theo sao (nếu có)
         if (filterRating !== null) {
             reviews = reviews.filter((rev) => rev.star === filterRating);
         }
 
-        // Bước 2: Áp dụng sort/filter theo option
         switch (sortOption) {
             case 'most-recent':
                 reviews.sort((a, b) => new Date(b.day) - new Date(a.day));
@@ -86,7 +45,6 @@ export const Review = () => {
                 break;
 
             case 'only-pictures':
-                // CHẶT CHẼ: chỉ giữ review có pictures là array VÀ length > 0
                 reviews = reviews.filter((rev) => {
                     const pics = rev.pictures;
                     return Array.isArray(pics) && pics.length > 0;
@@ -115,7 +73,6 @@ export const Review = () => {
     const reviewsPerPage = 5;
     const sortedReviews = getSortedReviews();
     const filteredReviews = sortedReviews;
-    // const filteredReviews = filterRating === null ? allReviews : allReviews.filter((rev) => rev.star === filterRating);
     const totalPages = Math.ceil(filteredReviews.length / reviewsPerPage);
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
@@ -123,14 +80,14 @@ export const Review = () => {
     const [selectedRating, setSelectedRating] = useState(null);
     const handleSortChange = (e) => {
         setSortOption(e.target.value);
-        setCurrentPage(1); // reset về trang 1 khi thay đổi sort
+        setCurrentPage(1);
     };
     const [isLoading, setIsLoading] = useState(false);
     const simulateLoading = () => {
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve();
-            }, 600); // 900ms – bạn có thể đổi thành 1200 hoặc random 800-1500
+            }, 600);
         });
     };
 
@@ -146,13 +103,12 @@ export const Review = () => {
         1: { freq: 0, perc: 0 },
     };
 
-    // 3. Hàm handleFilterClick (bỏ type, dùng async bình thường)
     const handleFilterClick = async (rating) => {
         setIsLoading(true);
-        await simulateLoading(); // hàm giả lập loading từ trước (nếu có)
+        await simulateLoading();
 
         setFilterRating(rating);
-        setSelectedRating(rating); // rating sẽ là number hoặc null
+        setSelectedRating(rating);
         setCurrentPage(1);
 
         setIsLoading(false);
@@ -326,12 +282,26 @@ export const Review = () => {
                                 <div className={styles.jdgmRowStars}>
                                     <div className={styles.jdgmRevWidgSummary}>
                                         <div className={styles.jdgmRevWidgSummaryInner}>
-                                            <div className={styles.jdgmRevWidgSummaryStars} role="img">
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmOn}`}></span>
-                                                <span className={`${styles.jdgmStar} ${styles.jdgmHalf}`}></span>
+                                            <div
+                                                className={styles.jdgmRevWidgSummaryStars}
+                                                role="img"
+                                                aria-label="4.67 out of 5 stars"
+                                            >
+                                                {[...Array(5)].map((_, i) => {
+                                                    const starValue = i + 1;
+                                                    const average = 4.67;
+                                                    return (
+                                                        <span key={i} className={styles.starWrapperr}>
+                                                            {starValue <= Math.floor(average) ? (
+                                                                <IconStarFull className={styles.starFilled} />
+                                                            ) : starValue <= average ? (
+                                                                <IconStarHalf className={styles.starFilled} />
+                                                            ) : (
+                                                                <IconStarHalf className={styles.starEmpty} />
+                                                            )}
+                                                        </span>
+                                                    );
+                                                })}
                                                 <span className={styles.jdgmRevWidgSummaryAverage}>4.67 out of 5</span>
                                             </div>
                                             <div
@@ -369,10 +339,13 @@ export const Review = () => {
                                                         tabIndex={0}
                                                     >
                                                         {[...Array(5)].map((_, i) => (
-                                                            <span
-                                                                key={i}
-                                                                className={`${styles.jdgmStar} ${i < rating ? styles.jdgmOn : styles.jdgmOff}`}
-                                                            />
+                                                            <span key={i} className={styles.starWrapper}>
+                                                                {i < rating ? (
+                                                                    <IconStarFull className={styles.starFilled} />
+                                                                ) : (
+                                                                    <IconStar className={styles.starEmpty} />
+                                                                )}
+                                                            </span>
                                                         ))}
                                                     </div>
 
@@ -445,7 +418,22 @@ export const Review = () => {
                                             <>
                                                 <div className={styles.jdgmNotification}>
                                                     <div className={styles.jdgmNotificationInner}>
-                                                        <div className={styles.jdgmNotificationTitle}>
+                                                        <IconCheck
+                                                            style={{
+                                                                height: '35px',
+                                                                width: '35px',
+                                                                color: 'white',
+                                                                background: '#fa8a8a',
+                                                                borderRadius: '60%',
+                                                            }}
+                                                        />
+                                                        <div
+                                                            style={{
+                                                                fontSize: '150%',
+                                                                fontWeight: 'bold',
+                                                                marginBottom: '16px',
+                                                            }}
+                                                        >
                                                             Review Submitted!
                                                         </div>
                                                         Thank you! Your review will be published as soon as it is
@@ -480,17 +468,22 @@ export const Review = () => {
                                                             style={{ cursor: 'pointer' }}
                                                         >
                                                             {[1, 2, 3, 4, 5].map((star) => (
-                                                                <a
+                                                                <span
                                                                     key={star}
-                                                                    data-alt={star}
-                                                                    className={`${styles.jdgmStar} ${rating >= star ? styles.jdgmOn : styles.jdgmOff}`}
+                                                                    className={styles.starWrapper}
                                                                     title={`${star} star${star > 1 ? 's' : ''}`}
                                                                     role="button"
                                                                     aria-label={`${star} star${star > 1 ? 's' : ''}`}
                                                                     onClick={() => handleStarClick(star)}
-                                                                ></a>
+                                                                >
+                                                                    {rating >= star ? (
+                                                                        <IconStarFull className={styles.starFilled} />
+                                                                    ) : (
+                                                                        <IconStar className={styles.starEmpty} />
+                                                                    )}
+                                                                </span>
                                                             ))}
-                                                            <input name="score" type="hidden" />
+                                                            <input name="score" type="hidden" value={rating} />
                                                         </span>
                                                     </div>
 
@@ -540,7 +533,23 @@ export const Review = () => {
                                                                 className={`${styles.jdgmPictureFieldsetBox} ${styles.jdgmPictureFieldsetBoxInput}`}
                                                             >
                                                                 <div className={styles.jdgmPictureFieldsetBoxWrapper}>
-                                                                    <div className={styles.jdgmMediaFieldsetIcon}></div>
+                                                                    {isWide ? (
+                                                                        <IconDownload
+                                                                            style={{
+                                                                                height: '69px',
+                                                                                width: '60px',
+                                                                                marginTop: '32px',
+                                                                            }}
+                                                                        />
+                                                                    ) : (
+                                                                        <IconDownload
+                                                                            style={{
+                                                                                height: '69px',
+                                                                                width: '60px',
+                                                                                marginTop: '30px',
+                                                                            }}
+                                                                        />
+                                                                    )}
                                                                 </div>
 
                                                                 <input
@@ -666,7 +675,18 @@ export const Review = () => {
                                                                     <option value="all_initials">J.S.</option>
                                                                     <option value="anonymous">Anonymous</option>
                                                                 </select>
-                                                                <span className={styles.jdgmSortDropdownArrow}></span>
+                                                                {/* <span className={styles.jdgmSortDropdownArrow}></span> */}
+                                                                <span>
+                                                                    <IconArrowDown
+                                                                        style={{
+                                                                            color: '#fa8a8a',
+                                                                            height: '10px',
+                                                                            width: '10px',
+                                                                            marginLeft: '-20px',
+                                                                            marginTop: '5px',
+                                                                        }}
+                                                                    />
+                                                                </span>
                                                             </span>
                                                             )
                                                         </span>
@@ -847,7 +867,17 @@ export const Review = () => {
                                             <option value="videos-first">Videos First</option>
                                             <option value="most-helpful">Most Helpful</option>
                                         </select>
-                                        <span className={styles.jdgmSortDropdownArrow}></span>
+                                        <span>
+                                            <IconArrowDown
+                                                style={{
+                                                    color: '#fa8a8a',
+                                                    height: '10px',
+                                                    width: '10px',
+                                                    marginLeft: '-20px',
+                                                    marginTop: '5px',
+                                                }}
+                                            />
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -871,16 +901,28 @@ export const Review = () => {
                                                         role="img"
                                                     >
                                                         {[...Array(5)].map((_, i) => (
-                                                            <span
-                                                                key={i}
-                                                                className={`${styles.jdgmStar} ${i < rev.star ? styles.jdgmOn : styles.jdgmOff}`}
-                                                            ></span>
+                                                            <span key={i} className={styles.starWrapper}>
+                                                                {i < rev.star ? (
+                                                                    <IconStarFull className={styles.starFilled} />
+                                                                ) : (
+                                                                    <IconStar className={styles.starEmpty} />
+                                                                )}
+                                                            </span>
                                                         ))}
                                                     </span>
                                                     <span className={styles.jdgmRevTimestamp}>{rev.day}</span>
                                                 </div>
                                                 <div className={styles.jdgmRowProfile}>
-                                                    <div className={styles.jdgmRevIcon}></div>
+                                                    <div className={styles.jdgmRevIcon}>
+                                                        <IconAvatar
+                                                            style={{
+                                                                height: '34px',
+                                                                width: '36px',
+                                                                background: 'rgba(224, 224, 224, 0.5)',
+                                                                bottom: '10px',
+                                                            }}
+                                                        />
+                                                    </div>
                                                     <span className={styles.jdgmRevAuthorWrapper}>
                                                         <span className={styles.jdgmRevAuthor}>{rev.displayName}</span>
                                                         <span className={styles.jdgmRevBuyerBadgeWrapper}>

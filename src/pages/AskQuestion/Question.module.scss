@@ -190,3 +190,54 @@
         padding: 0 5rem;
     }
 }
+@media only screen and (max-width: 678px) {
+    .pageWidth {
+        padding: 0px 15px !important;
+    }
+    .productJudgeOuter {
+        padding: 32px 0 !important;
+    }
+    .productSectionTitle {
+        font-size: 24px !important;
+    }
+    .productFaqContainer {
+        padding: 16px !important;
+        .productFaqBox {
+            padding: 16px 0;
+        }
+    }
+    .productFaqThumb {
+        gap: 0 !important;
+    }
+    .productFaqThumb p {
+        font-size: 17px !important;
+        font-weight: 500;
+    }
+    .productStatsOuter {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .productExpertContent {
+        padding: 16px !important;
+        font-family: 'Lora', sans-serif;
+    }
+    .productTextImage {
+        flex-wrap: wrap;
+        gap: 0;
+    }
+    .productTextImageReviewsMobile {
+        max-width: 250px;
+        margin: auto;
+        display: block;
+    }
+    .productSectionTitle {
+        font-size: 24px !important;
+    }
+    .productPrimaryBtn {
+        display: block;
+        padding: 16px;
+        text-align: center;
+        font-size: 16px;
+    }
+}

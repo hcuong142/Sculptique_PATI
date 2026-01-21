@@ -80,3 +80,48 @@
     max-width: 48px;
     margin: 24px auto;
 }
+@media only screen and (max-width: 678px) {
+    .mainSection {
+        padding: 32px 0;
+        overflow-x: hidden;
+    }
+    .productSectionTitle {
+        font-size: 24px !important;
+    }
+    .productSectionText {
+        font-size: 16px !important;
+    }
+    .productWhyBloatingGrid {
+        margin-bottom: 24px;
+        display: grid;
+        gap: 8px;
+        .productWhyBloatingCell {
+            display: flex;
+        }
+        .productWhyBloatingCell > div {
+            width: 100%;
+        }
+        .productWhyBloatCellIn {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .productWhyBloatCellIn > div {
+            padding: 12px;
+        }
+    }
+    .productArrowImg {
+        display: block;
+        width: 100%;
+        max-width: 34px;
+        margin: 16px auto;
+    }
+    .productWhyNoteImg {
+        display: flex;
+        justify-content: space-around;
+        img {
+            max-width: 420px;
+        }
+    }
+}

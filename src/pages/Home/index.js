@@ -10,53 +10,73 @@ import { ReactComponent as IconClose } from 'src/assets/icons/close.svg';
 import { ReactComponent as IconPlus } from 'src/assets/icons/iconPlus.svg';
 import { ReactComponent as IconMinus } from 'src/assets/icons/iconMinus.svg';
 import { ReactComponent as IconReview } from 'src/assets/icons/iconReview.svg';
-import { ReactComponent as IconDoctor } from 'src/assets/icons/doctor.svg';
-import { useState } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { useEffect, useRef, useState } from 'react';
 import { AsSeeIn } from '../AsSeeIn';
 import { JudgeOuter } from '../JudgeOuter';
 import { HiddenSystem } from '../HiddenSystem';
 import { AskQuestion } from '../AskQuestion';
 import { useNavigate } from 'react-router-dom';
+import { productImages, SPECIAL_IMAGE_INDEX, packages, providers } from '~/data/data';
 
 export const Home = ({ productId = 2691 }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalOpenNutri, setIsModalOpenNutri] = useState(false);
     const [isBottomRightVisible, setIsBottomRightVisible] = useState(true);
-    // const [activePackage, setActivePackage] = useState('three');
     const [expandedTabs, setExpandedTabs] = useState([]);
     const [selectedProvider, setSelectedProvider] = useState(null);
     const navigate = useNavigate();
     const [activePackage, setActivePackage] = useState('two');
+    const sliderRef = useRef();
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const thumbnailRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(window.innerWidth > 678);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth > 678);
+        };
 
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    useEffect(() => {
+        if (!thumbnailRef.current) return;
+
+        const container = thumbnailRef.current;
+        const activeThumb = container.children[currentSlide];
+
+        if (!activeThumb) return;
+
+        const containerRect = container.getBoundingClientRect();
+        const thumbRect = activeThumb.getBoundingClientRect();
+
+        const relativeLeft = thumbRect.left - containerRect.left;
+
+        // Nếu thumbnail active đang nằm ngoài vùng nhìn (bên trái hoặc phải)
+        if (relativeLeft < 0 || relativeLeft + thumbRect.width > containerRect.width) {
+            // Scroll sao cho thumbnail active nằm giữa container
+            const scrollTo = activeThumb.offsetLeft - containerRect.width / 2 + thumbRect.width / 2;
+
+            // Giới hạn scrollTo trong khoảng hợp lệ
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            const safeScroll = Math.max(0, Math.min(scrollTo, maxScroll));
+
+            container.scrollTo({
+                left: safeScroll,
+                behavior: 'smooth',
+            });
+        }
+        // Nếu đã visible rồi thì không cần scroll (tránh nhảy lung tung)
+    }, [currentSlide]);
     const handleAddToCart = () => {
-        // if (!activePackage) return;
-
-        // navigate('/checkout', { state: { selectedPackage: activePackage } });
         const selectedDetails = packages[activePackage];
 
         // Chuyển hướng đến trang giỏ hàng và truyền dữ liệu
         navigate('/checkout', { state: { selectedPackage: selectedDetails } });
-    };
-
-    const packages = {
-        one: {
-            title: '1 Bottle',
-            info: '1 bottle total | Save $27.99',
-            price: '$31.96',
-            compare: '$59.95',
-        },
-        two: {
-            title: 'Buy 2 Get 1 Free',
-            info: '3 bottles total | Save $115.93',
-            price: '$63.92',
-            compare: '$179.85',
-        },
-        three: {
-            title: 'Buy 3 Get 2 Free',
-            info: '5 bottles total | Save $203.87',
-            price: '$95.88',
-            compare: '$299.75',
-        },
     };
 
     const toggleTab = (index) => {
@@ -67,134 +87,9 @@ export const Home = ({ productId = 2691 }) => {
         }
     };
 
-    const providers = [
-        {
-            id: 1468,
-            name: 'Dr. Mona Sadek, MD',
-            image: 'https://assets.app.thefrontrowhealth.com/km1xsqx5eazm6dus8r6hyzsu161s',
-            total: 1,
-            location: 'Roanoke, VA',
-            specialty: 'OB/GYN',
-            website: 'https://lgphysicians.com/physicians/profile/Dr-Mona-Sadek-MD',
-            npinumber: '1275500746',
-            joined: '2025',
-            practicetype: 'Private practice',
-            code: 'MSADEK',
-        },
-        {
-            id: 9999,
-            name: 'Dr. Mark Chewning',
-            image: 'https://assets.app.thefrontrowhealth.com/cupevy2qn5lopnmiuppo0djjfam4',
-            total: 1,
-            location: 'Roanoke, VA',
-            npinumber: '1447247457',
-            specialty: 'Unknown',
-            practicetype: 'Private practice',
-            code: 'MCHEWNING',
-            joined: '2025',
-        },
-        {
-            id: 1001,
-            name: 'Dr. Iris Kaushik, MD',
-            image: 'https://assets.app.thefrontrowhealth.com/tbmlgnoy0v7lo7gqln7vhktkfnbp',
-            total: 1,
-            location: 'Houston, TX',
-            specialty: 'Internal Medicine',
-            practicetype: 'Private practice',
-            code: 'IKAUSHIK',
-            npinumber: '1194102871',
-            joined: '2025',
-            yearsPratice: '11',
-        },
-        {
-            id: 1002,
-            name: 'Dr. Jared Shipp, DPM',
-            image: 'https://assets.app.thefrontrowhealth.com/a33j0kefiyhuit0ilp6856pndg4l',
-            total: 1,
-            location: 'Roanoke, VA',
-            specialty: 'Podiatry',
-            practicetype: 'Private practice',
-            npinumber: '1487915666',
-            code: 'JSHIPP',
-            joined: '2025',
-        },
-        {
-            id: 1003,
-            name: 'Dr. Kurt Hubach, MD',
-            image: 'https://assets.app.thefrontrowhealth.com/qogs9i7jmofid3eujc6rlatmoaqj',
-            total: 1,
-            location: 'Roanoke, VA',
-            specialty: 'Family Medicine',
-            practicetype: 'Private practice',
-            npinumber: '1376515775',
-            code: 'KHUBACH',
-            joined: '2025',
-        },
-        {
-            id: 1004,
-            name: 'Dr. Robert Chapdelaine, MD',
-            image: 'https://assets.app.thefrontrowhealth.com/2jcn2umx20l13busk07ffr5q673e',
-            total: 1,
-            location: 'Pennsville Township, NJ',
-            specialty: 'Cardiology',
-            npinumber: '1710080056',
-            practicetype: 'Private practice',
-            code: 'RCHAPDELAINE',
-            joined: '2025',
-        },
-        {
-            id: 1005,
-            name: 'Dr. Scott Hippeard, MD',
-            image: 'https://assets.app.thefrontrowhealth.com/4hbfpv89mckre3w2k2vibfmj7xaq',
-            total: 1,
-            location: 'Roanoke, VA',
-            specialty: 'Orthopedics',
-            npinumber: '1073625109',
-            code: 'SHIPPEARD',
-            practicetype: 'Private practice',
-            joined: '2025',
-        },
-        {
-            id: 1006,
-            name: 'Dr. Mohammed Mohuiddin, MD',
-            image: 'https://assets.app.thefrontrowhealth.com/h1ihocmzhebjynor7usseukw2r9a',
-            total: 1,
-            location: 'Garland, TX',
-            specialty: 'General Surgery',
-            npinumber: '1942308424',
-            practicetype: 'Private practice',
-            code: 'MMOHUIDDIN',
-            joined: '2025',
-        },
-        {
-            id: 1007,
-            name: 'Dr. Mahvish Ayman, MD',
-            image: 'https://assets.app.thefrontrowhealth.com/sn3htulo68wvs90v2mk72hm8tpvr',
-            total: 1,
-            location: 'Wylie, TX',
-            specialty: 'Pediatrics',
-            npinumber: '1871054726',
-            practicetype: 'Private practice',
-            code: 'MAYMAN',
-            joined: '2025',
-        },
-        {
-            id: 1008,
-            name: 'Dr. Margaret Siman, MD',
-            image: 'https://assets.app.thefrontrowhealth.com/phc0ft4gw1rypmkuzfwezbndp5ct',
-            total: 1,
-            location: 'Staunton, VA',
-            specialty: 'Endocrinology',
-            npinumber: '1225006729',
-            practicetype: 'Private practice',
-            code: 'MSIMAN',
-            joined: '2025',
-        },
-    ];
-
     const closeMainModal = () => {
         setIsModalOpen(false);
-        setSelectedProvider(null); // reset khi đóng hoàn toàn
+        setSelectedProvider(null);
     };
 
     const handleProviderClick = (provider) => {
@@ -211,63 +106,324 @@ export const Home = ({ productId = 2691 }) => {
                 <div className={styles.pageWidth}>
                     <div className={styles.mainProductContainer}>
                         <div style={{ width: '100%' }}>
-                            <div className={styles.mainProductImages}>
-                                <div className={styles.mainProduct1st}>
-                                    <img
-                                        className={styles.img1st}
-                                        loading="eager"
-                                        src="//trysculptique.com/cdn/shop/files/LymoPDPImagesArtboard1_8e287aa1-576e-42b1-9a87-ce2fcdaded3a.jpg?v=1760103674"
-                                    />
-                                </div>
-                                <div className={styles.mainProduct2nd}>
-                                    <div>
-                                        <img
-                                            loading="eager"
-                                            src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard2.jpg?v=1760103684"
-                                        />
+                            {isMobile ? (
+                                <>
+                                    <div className={styles.mainProductImages}>
+                                        <div className={styles.mainProduct1st}>
+                                            <img className={styles.img1st} src={productImages[0]} loading="eager" />
+                                            <div
+                                                onClick={() => setIsModalOpenNutri(true)}
+                                                className={styles.mainProductNutritionInfo}
+                                            >
+                                                <span>
+                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/leaves_1247958_1_cf2e7df4-c113-4c3a-be49-f876ec94d873.png?v=1766822629" />
+                                                </span>
+                                                <span>Nutritional Information</span>
+                                            </div>
+                                            {isModalOpenNutri && (
+                                                <div className={styles.nutritionPopupOuter} style={{ display: 'flex' }}>
+                                                    <div className={styles.nutritionPopupInner}>
+                                                        <img
+                                                            onClick={() => setIsModalOpenNutri(false)}
+                                                            loading="lazy"
+                                                            className={styles.nutritionPopupClose}
+                                                            src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Button_To_Expand.png?v=1752069152"
+                                                        />
+                                                        <h2 className={`${styles.mainProductTitle} ${styles.centered}`}>
+                                                            Nutritional Information
+                                                        </h2>
+                                                        {isMobile ? (
+                                                            <img
+                                                                style={{ aspectRatio: '0' }}
+                                                                className={`${styles.DesktopOnly} ${styles.nutritionImage}`}
+                                                                src="//trysculptique.com/cdn/shop/files/ingredients-min.png?v=1758713223"
+                                                            />
+                                                        ) : (
+                                                            <img
+                                                                style={{ aspectRatio: '0' }}
+                                                                class="Mobile_only nutrition_image"
+                                                                src="//trysculptique.com/cdn/shop/files/ingredients-min.png?v=1758713223"
+                                                            />
+                                                        )}
+
+                                                        <div className={styles.mainProductBtn}>
+                                                            Try Lymphatic Drainage Risk-Free
+                                                        </div>
+                                                        <div className={styles.mainProductPoints}>
+                                                            <div className={styles.mainProductPointLine}>
+                                                                <div>
+                                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285" />
+                                                                </div>
+                                                                <div>
+                                                                    <p>Made &amp; produced in the USA</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className={styles.mainProductPointLine}>
+                                                                <div>
+                                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285" />
+                                                                </div>
+                                                                <div>
+                                                                    <p>100% Natural Ingredients</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className={styles.mainProductPointLine}>
+                                                                <div>
+                                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285" />
+                                                                </div>
+                                                                <div>
+                                                                    <p>60-Day Money-Back Guarantee</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className={styles.mainProductPointLine}>
+                                                                <div>
+                                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285" />
+                                                                </div>
+                                                                <div>
+                                                                    <p>Free Shipping</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                            <img
+                                                className={styles.mainProducTBfBadge}
+                                                src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/nysale.png?v=1766822224"
+                                            />
+                                        </div>
+                                        <div className={styles.mainProduct2nd}>
+                                            <div>
+                                                <img
+                                                    loading="eager"
+                                                    src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard2.jpg?v=1760103684"
+                                                />
+                                            </div>
+                                            <div>
+                                                <img
+                                                    loading="eager"
+                                                    src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard3copy.jpg?v=1760103684"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className={styles.mainProduct3rd}>
+                                            <div>
+                                                <img
+                                                    loading="eager"
+                                                    src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard4.jpg?v=1760103685"
+                                                />
+                                            </div>
+                                            <div>
+                                                <img
+                                                    loading="eager"
+                                                    src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard5_1.jpg?v=1760103685"
+                                                />
+                                            </div>
+                                            <div>
+                                                <img
+                                                    loading="eager"
+                                                    src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard5_2.jpg?v=1760103685"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className={styles.mainProduct2ndBottom}>
+                                            <div>
+                                                <img
+                                                    loading="lazy"
+                                                    src="//trysculptique.com/cdn/shop/files/tiredness-min.png?v=1758713216"
+                                                />
+                                            </div>
+                                            <div>
+                                                <img
+                                                    loading="lazy"
+                                                    src="//trysculptique.com/cdn/shop/files/puffiness-min.png?v=1758713216"
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <img
-                                            loading="eager"
-                                            src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard3copy.jpg?v=1760103684"
-                                        />
+                                </>
+                            ) : (
+                                <>
+                                    <div className={styles.mainProductImages}>
+                                        <div className={styles.mainProduct1st}>
+                                            <button
+                                                type="button"
+                                                className={`${styles.slickPrev} ${styles.pullLeft} ${styles.slickArrow}`}
+                                                onClick={() => sliderRef.current?.slickPrev()}
+                                            >
+                                                <img
+                                                    className={styles.leftArrow}
+                                                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_1.png?v=1752126281"
+                                                    alt="Previous slide"
+                                                />
+                                            </button>
+
+                                            <Slider
+                                                ref={sliderRef}
+                                                dots={false}
+                                                infinite={true}
+                                                speed={500}
+                                                slidesToShow={1}
+                                                slidesToScroll={1}
+                                                arrows={false}
+                                                adaptiveHeight={true}
+                                                beforeChange={(oldIndex, newIndex) => setCurrentSlide(newIndex)}
+                                                className={styles.mobileSlider}
+                                            >
+                                                {productImages.map((img, index) => (
+                                                    <div key={index}>
+                                                        <div className={styles.mainProductImageBox}>
+                                                            <img
+                                                                loading={index === 0 ? 'eager' : 'lazy'}
+                                                                className={styles.imgMobile}
+                                                                src={img}
+                                                                alt={`Product image ${index + 1}`}
+                                                            />
+
+                                                            {/* Chỉ hiển thị badge sale + nutritional info khi đang ở slide đặc biệt (index 0) */}
+                                                            {index === SPECIAL_IMAGE_INDEX && (
+                                                                <>
+                                                                    <img
+                                                                        className={styles.mainProducTBfBadge}
+                                                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/nysale.png?v=1766822224"
+                                                                        alt="New Year Sale Badge"
+                                                                    />
+                                                                    <div
+                                                                        onClick={() => setIsModalOpenNutri(true)}
+                                                                        className={styles.mainProductNutritionInfo}
+                                                                    >
+                                                                        <span>
+                                                                            <img
+                                                                                src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/leaves_1247958_1_cf2e7df4-c113-4c3a-be49-f876ec94d873.png?v=1766822629"
+                                                                                alt="Nutritional leaves icon"
+                                                                            />
+                                                                        </span>
+                                                                        <span>Nutritional Information</span>
+                                                                    </div>
+                                                                </>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </Slider>
+
+                                            <button
+                                                type="button"
+                                                className={`${styles.slickNext} ${styles.pullRight} ${styles.slickArrow}`}
+                                                onClick={() => sliderRef.current?.slickNext()}
+                                            >
+                                                <img
+                                                    className={styles.rightArrow}
+                                                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_1.png?v=1752126281"
+                                                    alt="Next slide"
+                                                    style={{ transform: 'rotate(180deg)' }}
+                                                />
+                                            </button>
+                                        </div>
+
+                                        {/* Thumbnail gallery */}
+                                        <div ref={thumbnailRef} className={styles.thumbnailGallery}>
+                                            {productImages.map((img, index) => (
+                                                <div
+                                                    key={index}
+                                                    className={`${styles.thumbnailItem} ${currentSlide === index ? styles.active : ''}`}
+                                                    onClick={() => sliderRef.current?.slickGoTo(index)}
+                                                >
+                                                    <img
+                                                        src={img}
+                                                        alt={`Thumbnail ${index + 1}`}
+                                                        className={styles.thumbnailImage}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {/* Modal Nutritional Information */}
+                                        {isModalOpenNutri && (
+                                            <div className={styles.nutritionPopupOuter} style={{ display: 'flex' }}>
+                                                <div className={styles.nutritionPopupInner}>
+                                                    <img
+                                                        onClick={() => setIsModalOpenNutri(false)}
+                                                        loading="lazy"
+                                                        className={styles.nutritionPopupClose}
+                                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Button_To_Expand.png?v=1752069152"
+                                                        alt="Close modal"
+                                                    />
+                                                    <h2 className={`${styles.mainProductTitle} ${styles.centered}`}>
+                                                        Nutritional Information
+                                                    </h2>
+
+                                                    {isMobile ? (
+                                                        <img
+                                                            style={{ aspectRatio: '0' }}
+                                                            className={`${styles.DesktopOnly} ${styles.nutritionImage}`}
+                                                            src="//trysculptique.com/cdn/shop/files/ingredients-min.png?v=1758713223"
+                                                            alt="Nutritional info desktop"
+                                                        />
+                                                    ) : (
+                                                        <img
+                                                            style={{ aspectRatio: '0' }}
+                                                            className="Mobile_only nutrition_image"
+                                                            src="//trysculptique.com/cdn/shop/files/ingredients-min.png?v=1758713223"
+                                                            alt="Nutritional info mobile"
+                                                        />
+                                                    )}
+
+                                                    <div className={styles.mainProductBtn}>
+                                                        Try Lymphatic Drainage Risk-Free
+                                                    </div>
+
+                                                    <div className={styles.mainProductPoints}>
+                                                        <div className={styles.mainProductPointLine}>
+                                                            <div>
+                                                                <img
+                                                                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                                                                    alt="Check icon"
+                                                                />
+                                                            </div>
+                                                            <div>
+                                                                <p>Made & produced in the USA</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className={styles.mainProductPointLine}>
+                                                            <div>
+                                                                <img
+                                                                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                                                                    alt="Check icon"
+                                                                />
+                                                            </div>
+                                                            <div>
+                                                                <p>100% Natural Ingredients</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className={styles.mainProductPointLine}>
+                                                            <div>
+                                                                <img
+                                                                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                                                                    alt="Check icon"
+                                                                />
+                                                            </div>
+                                                            <div>
+                                                                <p>60-Day Money-Back Guarantee</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className={styles.mainProductPointLine}>
+                                                            <div>
+                                                                <img
+                                                                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                                                                    alt="Check icon"
+                                                                />
+                                                            </div>
+                                                            <div>
+                                                                <p>Free Shipping</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
-                                </div>
-                                <div className={styles.mainProduct3rd}>
-                                    <div>
-                                        <img
-                                            loading="eager"
-                                            src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard4.jpg?v=1760103685"
-                                        />
-                                    </div>
-                                    <div>
-                                        <img
-                                            loading="eager"
-                                            src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard5_1.jpg?v=1760103685"
-                                        />
-                                    </div>
-                                    <div>
-                                        <img
-                                            loading="eager"
-                                            src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard5_2.jpg?v=1760103685"
-                                        />
-                                    </div>
-                                </div>
-                                <div className={styles.mainProduct2ndBottom}>
-                                    <div>
-                                        <img
-                                            loading="lazy"
-                                            src="//trysculptique.com/cdn/shop/files/tiredness-min.png?v=1758713216"
-                                        />
-                                    </div>
-                                    <div>
-                                        <img
-                                            loading="lazy"
-                                            src="//trysculptique.com/cdn/shop/files/puffiness-min.png?v=1758713216"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
+                                </>
+                            )}
                         </div>
                         <div style={{ width: '100%' }}>
                             <div className={styles.mainProductReviews}>
@@ -1134,7 +1290,7 @@ export const BottomRight = ({ onClose, onLearnMore }) => {
                                     style={{ zIndex: 2 }}
                                 />
                             </span>
-                            <button className={styles.testimonialCta}>
+                            <button className={styles.testimonialCta} style={{ marginTop: '8px' }}>
                                 <p>Read their reviews</p>
                             </button>
                         </div>

@@ -37,6 +37,7 @@
     display: flex;
     gap: 100px;
     align-items: center;
+    font-family: 'Lora', sans-serif;
     img {
         display: block;
         width: 100%;
@@ -250,6 +251,9 @@
 }
 .btnContainer {
     margin-top: 24px;
+}
+.btnContaine {
+    margin-top: 32px;
 }
 .productPrimaryBtn {
     font-family: Nunito;
@@ -610,6 +614,7 @@
         font-size: 16px;
         color: #0c7c00;
         margin: 0;
+        font-family: 'Nunito', sans-serif;
         img {
             max-width: 16px;
             display: block;
@@ -718,7 +723,7 @@
     }
 }
 @media only screen and (min-width: 992px) {
-    .jdgmWidget:not(.jdgm-reviewWidgetSmall, .jdgm-reviewWidgetMedium) .jdgm-medalsWrapper {
+    .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgm-reviewWidgetMedium) .jdgm-medalsWrapper {
         padding-left: 32px;
     }
     .jdgmWidget:not(.jdgmReviewWidgetSmall, .jdgmReviewWidgetMedium) .jdgmRevWidgTitle {
@@ -1059,7 +1064,7 @@ a.jdgmWriteRevLink {
 }
 .jdgmWidget:not(.jdgmMedalsWrapper) .jdgmMedals .jdgmMedalsContainer {
     display: block;
-    overflow: auto;
+    // overflow: auto;
     white-space: nowrap;
 }
 .jdgmMedalsWrapper .jdgmMedalsContainer {
@@ -1274,7 +1279,7 @@ h6:empty {
     display: none;
 }
 .jdgmRevHeader {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     .jdgmRowRating {
         margin-bottom: 8px;
     }
@@ -1503,7 +1508,7 @@ h6:empty {
 }
 .jdgmForm {
     margin: 0 auto;
-    padding: 0 16px;
+    // padding: 0 16px;
     max-width: 600px;
 }
 .jdgmFormTitle {
@@ -1721,4 +1726,173 @@ input[type='submit'].jdgmBtnSolid {
 .jdgmHistogramRow:hover,
 .jdgmHistogramRowSelected {
     opacity: 0.6;
+}
+@media only screen and (max-width: 678px) {
+    .productJudgeOuter {
+        padding: 32px 0;
+    }
+    .productSectionTitle {
+        font-size: 25px !important;
+    }
+    .pliFlex {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        gap: 16px;
+    }
+    .pliTopText *,
+    .pliPinkText *,
+    .pliBottomText * {
+        font-size: 16px !important;
+    }
+    .pliPinkText {
+        margin: 12px 0 !important;
+    }
+    .productWhyBloatingGrid {
+        margin-bottom: 24px;
+        display: grid;
+        gap: 8px;
+    }
+    .productPrimaryBtn {
+        display: block;
+        padding: 16px;
+        text-align: center;
+        font-size: 16px;
+    }
+    .productLymphIngrTable {
+        grid-template-columns: 1fr;
+        .productLymphIngredient {
+            padding: 16px !important;
+        }
+    }
+    .productLymphIngrThumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: space-between;
+    }
+    .productLymphIngrContent {
+        padding-top: 0px !important;
+    }
+    .productImg {
+        img {
+            max-width: 24px !important;
+        }
+    }
+    .productLymphMainImg {
+        img {
+            max-width: 60px !important;
+        }
+    }
+    .productLymphIngrThumb h5 {
+        font-size: 14px !important;
+    }
+    .productLymphIngrThumb > div:nth-child(1) {
+        width: 20%;
+    }
+    .productLymphIngrThumb > div:nth-child(2) {
+        width: 70%;
+    }
+    .productLymphIngrThumb > div:nth-child(3) {
+        width: 10%;
+    }
+    .productJudgeOuter.productLymphgIngrOuter img.productLymphMainImg {
+        margin: 0;
+        width: 100%;
+        max-width: 100px;
+    }
+    .jdgmHistogramRow {
+        display: block;
+    }
+    .shopifySection {
+        overflow-x: hidden;
+    }
+    .productIconsGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .productIconsGrid p.h4title {
+        max-width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .productExpertContent {
+        padding: 16px;
+    }
+    .productJudgeOuter.mobileGrey {
+        background: #f7f7f7;
+    }
+    .productExpertOuter {
+        background: #fff;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+    .productCarouselOuter {
+        position: relative;
+        margin-left: -8px;
+        width: calc(100% + 24px);
+    }
+    .slickPrev {
+        left: 24px;
+        z-index: 2;
+        width: 32px;
+        height: 32px;
+    }
+    .slickTrack {
+        opacity: 1;
+        width: 2840px;
+        transform: translate3d(0px, 0px, 0px);
+    }
+    .slickTrack:after,
+    .slickTrack:before {
+        display: table;
+        content: '';
+    }
+    .slickSlide,
+    .slickCurrent,
+    .slickActive {
+        width: 284px;
+    }
+}
+.formMobile {
+    display: flex;
+    flex-direction: column;
+    .jdgmBtnMobile {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1;
+        text-decoration: none;
+        cursor: pointer;
+        color: white;
+        background-color: #fa8a8a;
+        border: 2px solid #108474;
+        border-color: #fa8a8a;
+    }
+    .jdgmBtnCancelMobile {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1;
+        text-decoration: none;
+        cursor: pointer;
+        color: #fa8a8a;
+        border: 2px solid #108474;
+        border-color: #fa8a8a;
+        margin-top: 10px;
+    }
+
+    .jdgmRevWidg {
+        padding: 0px 0px !important;
+    }
+}
+@media (max-width: 768px) {
+    .productJudgeOuter.productLymphgIngrOuter img.productLymphMainImg {
+        max-width: 100% !important;
+    }
+    .btnContainer {
+        display: block;
+        width: 100%;
+    }
 }

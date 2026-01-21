@@ -11,6 +11,16 @@ export const HiddenSystem = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [activeIndexes, setActiveIndexes] = useState([]);
     const contentRefs = useRef([]);
+    const [isWide, setIsWide] = useState(window.innerWidth > 678);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsWide(window.innerWidth > 678);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     useEffect(() => {
         const setupVideo = (video, currentIndex) => {
             if (!video) return () => {};
@@ -211,7 +221,12 @@ export const HiddenSystem = () => {
     return (
         <div>
             <div className={styles.productJudgeOuter}>
-                <div className={styles.pageWidth} style={{ padding: '0 49px' }}>
+                <div
+                    className={styles.pageWidth}
+                    style={{
+                        padding: isWide ? '0 49px' : '1px 15px',
+                    }}
+                >
                     <div className={`${styles.productJudgeContainer} ${styles.topPadding}`}>
                         <h2 className={`${styles.productSectionTitle} ${styles.centered}`}>
                             Your <span>Hidden</span> Drainage System
@@ -246,69 +261,135 @@ export const HiddenSystem = () => {
                             </div>
                         </div>
                         <div>
-                            <img
-                                loading="lazy"
-                                class="Desktop_only"
-                                src="//trysculptique.com/cdn/shop/files/Frame_1484580366_1.png?v=1760701546"
-                            />
-                            {/* <img loading="lazy" class="Mobile_only" src="//trysculptique.com/cdn/shop/files/Frame_1484580366_1.png?v=1760701546"/> */}
+                            {isWide ? (
+                                <img
+                                    loading="lazy"
+                                    class="Desktop_only"
+                                    src="//trysculptique.com/cdn/shop/files/Frame_1484580366_1.png?v=1760701546"
+                                />
+                            ) : (
+                                <img
+                                    loading="lazy"
+                                    class="Mobile_only"
+                                    src="//trysculptique.com/cdn/shop/files/Frame_1484580366_1.png?v=1760701546"
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
-            <div className={styles.productJudgeOuter} style={{ padding: '56px 0px' }}>
+            <div
+                className={styles.productJudgeOuter}
+                style={{
+                    padding: isWide ? '56px 0px' : '25px 0',
+                }}
+            >
                 <div className={styles.pageWidth}>
                     <div className={`${styles.pliFlex} ${styles.reversed}`}>
-                        <div>
-                            <img
-                                loading="lazy"
-                                class="Desktop_only"
-                                src="//trysculptique.com/cdn/shop/files/ChatGPT_Image_Oct_10_2025_at_03_26_38_PM_2.png?v=1760702096"
-                            />
-                            {/* <img loading="lazy" class="Mobile_only" src="//trysculptique.com/cdn/shop/files/ChatGPT_Image_Oct_10_2025_at_03_26_38_PM_2.png?v=1760702096"/> */}
-                        </div>
-                        <div>
-                            <div className={styles.pliTopText}>
-                                <p>
-                                    <strong>And it accumulates. Day after day. Week after week.</strong>
-                                </p>
-                                <p>
-                                    That gallon of fluid your body should be draining every 24 hours? It's pooling in
-                                    your stomach, your legs, your face—anywhere gravity and tissue structure allow it to
-                                    settle.
-                                </p>
+                        {isWide ? (
+                            <div className={`${styles.pliFlex} ${styles.reversed}`}>
+                                <div>
+                                    <img
+                                        loading="lazy"
+                                        class="Desktop_only"
+                                        src="//trysculptique.com/cdn/shop/files/ChatGPT_Image_Oct_10_2025_at_03_26_38_PM_2.png?v=1760702096"
+                                    />
+                                </div>
+                                <div>
+                                    <div className={styles.pliTopText}>
+                                        <p>
+                                            <strong>And it accumulates. Day after day. Week after week.</strong>
+                                        </p>
+                                        <p>
+                                            That gallon of fluid your body should be draining every 24 hours? It's
+                                            pooling in your stomach, your legs, your face—anywhere gravity and tissue
+                                            structure allow it to settle.
+                                        </p>
+                                    </div>
+                                    <div className={styles.pliPinkText}>
+                                        <p>
+                                            The metabolic waste your cells produce overnight? It's still sitting there
+                                            at noon. At dinner. While you're trying to fall asleep.
+                                        </p>
+                                        <ul>
+                                            <li>That's why you're bloated. </li>
+                                            <li>That's why your ankles swell.</li>
+                                            <li>That's why you see cellulite.</li>
+                                            <li>That's why you feel exhausted and foggy.</li>
+                                        </ul>
+                                    </div>
+                                    <div className={styles.pliBottomText}>
+                                        <p>
+                                            <strong>
+                                                Your cells are literally sitting in their own waste—and your body can't
+                                                flush it out.
+                                            </strong>
+                                        </p>
+                                        <p>
+                                            The longer this goes on, the worse it gets. More congestion. More
+                                            inflammation. More pressure on an already compromised system.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div className={styles.pliPinkText}>
-                                <p>
-                                    The metabolic waste your cells produce overnight? It's still sitting there at noon.
-                                    At dinner. While you're trying to fall asleep.
-                                </p>
-                                <ul>
-                                    <li>That's why you're bloated. </li>
-                                    <li>That's why your ankles swell.</li>
-                                    <li>That's why you see cellulite.</li>
-                                    <li>That's why you feel exhausted and foggy.</li>
-                                </ul>
+                        ) : (
+                            <div className={`${styles.pliFlex} ${styles.reversed}`} style={{ padding: '0 15px' }}>
+                                <div>
+                                    <div className={styles.pliTopText}>
+                                        <p>
+                                            <strong>And it accumulates. Day after day. Week after week.</strong>
+                                        </p>
+                                        <p>
+                                            That gallon of fluid your body should be draining every 24 hours? It's
+                                            pooling in your stomach, your legs, your face—anywhere gravity and tissue
+                                            structure allow it to settle.
+                                        </p>
+                                    </div>
+                                    <div className={styles.pliPinkText}>
+                                        <p>
+                                            The metabolic waste your cells produce overnight? It's still sitting there
+                                            at noon. At dinner. While you're trying to fall asleep.
+                                        </p>
+                                        <ul>
+                                            <li>That's why you're bloated. </li>
+                                            <li>That's why your ankles swell.</li>
+                                            <li>That's why you see cellulite.</li>
+                                            <li>That's why you feel exhausted and foggy.</li>
+                                        </ul>
+                                    </div>
+                                    <div className={styles.pliBottomText}>
+                                        <p>
+                                            <strong>
+                                                Your cells are literally sitting in their own waste—and your body can't
+                                                flush it out.
+                                            </strong>
+                                        </p>
+                                        <p>
+                                            The longer this goes on, the worse it gets. More congestion. More
+                                            inflammation. More pressure on an already compromised system.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img
+                                        loading="lazy"
+                                        class="Mobile_only"
+                                        src="//trysculptique.com/cdn/shop/files/ChatGPT_Image_Oct_10_2025_at_03_26_38_PM_2.png?v=1760702096"
+                                    />
+                                </div>
                             </div>
-                            <div className={styles.pliBottomText}>
-                                <p>
-                                    <strong>
-                                        Your cells are literally sitting in their own waste—and your body can't flush it
-                                        out.
-                                    </strong>
-                                </p>
-                                <p>
-                                    The longer this goes on, the worse it gets. More congestion. More inflammation. More
-                                    pressure on an already compromised system.
-                                </p>
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>
             <div>
                 <div className={`${styles.productJudgeOuter} ${styles.outerHowNothing}`}>
-                    <div className={styles.pageWidth} style={{ padding: '0 47px' }}>
+                    <div
+                        className={styles.pageWidth}
+                        style={{
+                            padding: isWide ? '0 47px' : '0px 15px',
+                        }}
+                    >
                         <div className={styles.productJudgeContainer}>
                             <h2 className={`${styles.productSectionTitle} ${styles.centered}`}>
                                 Why Nothing Has <span>Worked</span>
@@ -388,12 +469,19 @@ export const HiddenSystem = () => {
                             </div>
                         </div>
                         <div className={styles.productWhyNoteImg}>
-                            <img
-                                class="Desktop_only"
-                                loading="lazy"
-                                src="//trysculptique.com/cdn/shop/files/Group_7207_1.png?v=1760694176"
-                            />
-                            {/* <img class="Desktop_only" loading="lazy" src="//trysculptique.com/cdn/shop/files/Group_7207_1.png?v=1760694176"/> */}
+                            {isWide ? (
+                                <img
+                                    class="Desktop_only"
+                                    loading="lazy"
+                                    src="//trysculptique.com/cdn/shop/files/Group_7207_1.png?v=1760694176"
+                                />
+                            ) : (
+                                <img
+                                    class="Mobile_only"
+                                    loading="lazy"
+                                    src="//trysculptique.com/cdn/shop/files/Frame_1000003583_1.png?v=1760694176"
+                                />
+                            )}
                         </div>
                         <div className={styles.centered} style={{ marginTop: '24px' }}>
                             <a
@@ -415,7 +503,12 @@ export const HiddenSystem = () => {
 
             <div>
                 <div className={`${styles.productJudgeOuter} ${styles.pink}`}>
-                    <div className={styles.pageWidth} style={{ padding: '0 50px' }}>
+                    <div
+                        className={styles.pageWidth}
+                        style={{
+                            padding: isWide ? '0 50px' : '0px 15px',
+                        }}
+                    >
                         <div className={styles.productJudgeContainer}>
                             <h2 className={`${styles.productSectionTitle} ${styles.centered}`}>
                                 <span>The 8-Ingredient System</span> That Restores What Hormones Once Maintained
@@ -442,15 +535,36 @@ export const HiddenSystem = () => {
                                         </span>
                                         <span>{ingredient.title}</span>
                                     </p>
-                                    <img className={styles.productLymphMainImg} loading="lazy" src={ingredient.img} />
-                                    <div className={styles.productLymphIngrThumb}>
-                                        <div>
-                                            <h5>{ingredient.thumb.name}</h5>
+                                    {isWide ? (
+                                        <>
+                                            <img
+                                                className={styles.productLymphMainImg}
+                                                loading="lazy"
+                                                src={ingredient.img}
+                                            />
+                                            <div className={styles.productLymphIngrThumb}>
+                                                <div>
+                                                    <h5>{ingredient.thumb.name}</h5>
+                                                </div>
+                                                <div>
+                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/weui_arrow-outlined.png?v=1760698626" />
+                                                </div>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div className={styles.productLymphIngrThumb}>
+                                            <div className={styles.productLymphMainImg}>
+                                                <img loading="lazy" src={ingredient.img} />
+                                            </div>
+                                            <div>
+                                                <h5>{ingredient.thumb.name}</h5>
+                                            </div>
+                                            <div className={styles.productImg}>
+                                                <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/weui_arrow-outlined.png?v=1760698626" />
+                                            </div>
                                         </div>
-                                        <div>
-                                            <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/weui_arrow-outlined.png?v=1760698626" />
-                                        </div>
-                                    </div>
+                                    )}
+
                                     <div
                                         ref={(el) => (contentRefs.current[index] = el)}
                                         className={`${styles.productLymphIngrContent} ${activeIndexes.includes(index) ? styles.expanded : ''}`}
@@ -467,12 +581,19 @@ export const HiddenSystem = () => {
                             ))}
                         </div>
                         <div className={styles.productLymphIngrTableSmall}>
-                            <img
-                                class="Desktop_only"
-                                loading="lazy"
-                                src="//trysculptique.com/cdn/shop/files/Frame_1000003583_2.png?v=1760697982"
-                            />
-                            {/* <img class="Mobile_only" loading="lazy" src="//trysculptique.com/cdn/shop/files/Frame_1000003583_3.png?v=1760697982"/> */}
+                            {isWide ? (
+                                <img
+                                    class="Desktop_only"
+                                    loading="lazy"
+                                    src="//trysculptique.com/cdn/shop/files/Frame_1000003583_2.png?v=1760697982"
+                                />
+                            ) : (
+                                <img
+                                    class="Mobile_only"
+                                    loading="lazy"
+                                    src="//trysculptique.com/cdn/shop/files/Frame_1000003583_3.png?v=1760697982"
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
@@ -480,9 +601,14 @@ export const HiddenSystem = () => {
 
             <Review />
 
-            <div>
+            <div className={styles.shopifySection}>
                 <div className={`${styles.productJudgeOuter} ${styles.pink}`}>
-                    <div className={styles.pageWidth} style={{ padding: '0px 30px' }}>
+                    <div
+                        className={styles.pageWidth}
+                        style={{
+                            padding: isWide ? '0 30px' : '10px 15px',
+                        }}
+                    >
                         <div className={styles.productIconsGrid}>
                             <div>
                                 <img src="//trysculptique.com/cdn/shop/files/ship-min.png?v=1758713222" />
@@ -512,9 +638,17 @@ export const HiddenSystem = () => {
             <div>
                 <div
                     className={`${styles.productJudgeOuter} ${styles.mobileGrey}`}
-                    style={{ padding: '56px 0px', marginTop: '0px' }}
+                    style={{
+                        padding: isWide ? '56px 0' : '0 15px',
+                        marginTop: '0',
+                    }}
                 >
-                    <div className={styles.pageWidth} style={{ padding: '0px 52px' }}>
+                    <div
+                        className={styles.pageWidth}
+                        style={{
+                            padding: isWide ? '0 52px' : '30px 0px',
+                        }}
+                    >
                         <div className={styles.productExpertOuter}>
                             <div>
                                 <div className={styles.productExpertContent}>
@@ -565,8 +699,16 @@ export const HiddenSystem = () => {
             </div>
 
             <div>
-                <div className={styles.productJudgeOuter} style={{ background: '#f3eee0', padding: '56px 0px' }}>
-                    <div className={styles.pageWidth} style={{ padding: '0px 49px' }}>
+                <div
+                    className={styles.productJudgeOuter}
+                    style={{ background: '#f3eee0', padding: isWide ? '56px 0px' : '28px 0px' }}
+                >
+                    <div
+                        className={styles.pageWidth}
+                        style={{
+                            padding: isWide ? '0 49px' : '0px 15px',
+                        }}
+                    >
                         <div className={styles.productJudgeContainer}>
                             <img
                                 src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Trustpilot_review_2.png?v=1752485383"

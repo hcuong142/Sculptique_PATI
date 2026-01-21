@@ -1,246 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './Hidden.module.scss';
-
-const initialReviews = [
-    {
-        star: 5,
-        content: 'Seems to work going to order another bottle',
-        displayName: 'Herman Buckley',
-        day: '01/15/2026',
-    },
-    {
-        star: 5,
-        content:
-            'Pretty sure I’m seeing improvement in the smoothness of my skin after 30 days. Will continue with confidence it’s working.',
-        displayName: 'Anonymous',
-        day: '12/08/2025',
-    },
-    {
-        star: 5,
-        content: 'One month and I’ve already seen a difference!',
-        displayName: 'Anonymous',
-        day: '12/01/2025',
-    },
-    {
-        star: 5,
-        content:
-            'I LOVE THEM! My legs have gone from late stage 2 to late one!!! Oh my gosh! It’s a miracle! I no longer have to worry about elephantitus in my future! Thank you so much!!!!!!',
-        displayName: 'Donabeth Houx',
-        day: '11/23/2025',
-    },
-    {
-        star: 5,
-        content:
-            "It took me about 60 days to notice a difference in smoothness. My husband noticed which is why I purchased another round. I'm happy.",
-        displayName: 'Dawn Camacho',
-        day: '11/17/2025',
-    },
-    {
-        star: 5,
-        content: 'I have noticed a difference on my swelling.',
-        displayName: 'Anonymous',
-        day: '11/13/2025',
-    },
-    {
-        star: 5,
-        content: 'starting to see results after one bottle',
-        displayName: 'Anonymous',
-        day: '11/10/2025',
-    },
-    {
-        star: 5,
-        content:
-            'Whenever I am sitting or laying down for awhile, I’m really stiff & I feel like my lower body doesn’t belong to me. Almost immediately after taking these pills, I am no longer stiff & I move with ease! Thank you!',
-        displayName: 'Lynda Sandora',
-        day: '11/09/2025',
-    },
-    {
-        star: 5,
-        content: 'I had been having post menopausal acne, it has cleared up!',
-        displayName: 'Meg Christie',
-        day: '11/09/2025',
-    },
-    {
-        star: 5,
-        content: 'Excellent product',
-        displayName: 'Anonymous',
-        day: '11/08/2025',
-    },
-    {
-        star: 5,
-        content: 'Love it! 😍',
-        displayName: 'Anonymous',
-        day: '11/08/2025',
-    },
-    {
-        star: 5,
-        content: 'I love this product and I see the benefits of it 🙌🏽',
-        displayName: 'Agnes Oates',
-        day: '11/08/2025',
-    },
-    {
-        star: 5,
-        content: '.',
-        displayName: 'Anonymous',
-        day: '10/23/2025',
-    },
-    {
-        star: 5,
-        content: 'So far, I am happy.',
-        displayName: 'Kelly Serre',
-        day: '10/16/2025',
-    },
-    {
-        star: 5,
-        content: 'My skin is feeling so soft!',
-        displayName: 'Barbara Jean',
-        day: '10/16/2025',
-    },
-    {
-        star: 4,
-        content:
-            'So far I’ve noticed less swelling in my feet by the end of the day. Haven’t noticed any cellulite repair yet and still have heaviness but not as much.',
-        displayName: 'Erika Wasielewski ',
-        day: '10/15/2025',
-    },
-    {
-        star: 4,
-        content: 'Product is okay, saw some improvement but not as expected.',
-        displayName: 'John Doe',
-        day: '01/10/2026',
-    },
-    {
-        star: 4,
-        content: 'Helped with swelling, but skin smoothness is still the same.',
-        displayName: 'Jane Smith',
-        day: '01/05/2026',
-    },
-    {
-        star: 4,
-        content: 'Good results after two weeks, but could be faster.',
-        displayName: 'Alice Johnson',
-        day: '12/25/2025',
-    },
-    {
-        star: 4,
-        content: 'Reduced heaviness in legs, satisfied overall.',
-        displayName: 'Bob Brown',
-        day: '12/20/2025',
-    },
-    {
-        star: 4,
-        content: 'Not bad, but I expected more from the capsules.',
-        displayName: 'Carol Davis',
-        day: '12/15/2025',
-    },
-    {
-        star: 4,
-        content: 'Saw minor changes, will continue using.',
-        displayName: 'David Evans',
-        day: '12/10/2025',
-    },
-    {
-        star: 4,
-        content: 'Helps with daily comfort, but not a miracle.',
-        displayName: 'Eve Foster',
-        day: '12/05/2025',
-    },
-    {
-        star: 4,
-        content: 'Improved skin texture slightly.',
-        displayName: 'Frank Green',
-        day: '11/30/2025',
-    },
-    {
-        star: 4,
-        content: 'Decent product for the price.',
-        displayName: 'Grace Harris',
-        day: '11/25/2025',
-    },
-    {
-        star: 4,
-        content: 'Noticeable difference in swelling reduction.',
-        displayName: 'Henry Irving',
-        day: '11/20/2025',
-    },
-
-    {
-        star: 3,
-        content:
-            'So far I’ve noticed less swelling in my feet by the end of the day. Haven’t noticed any cellulite repair yet and still have heaviness but not as much.',
-        displayName: 'Cuong ',
-        day: '10/15/2025',
-    },
-    {
-        star: 3,
-        content: 'Product is okay, saw some improvement but not as expected.',
-        displayName: 'John Doe',
-        day: '01/10/2026',
-    },
-    {
-        star: 3,
-        content: 'Helped with swelling, but skin smoothness is still the same.',
-        displayName: 'Jane Smith',
-        day: '01/05/2026',
-    },
-    {
-        star: 3,
-        content: 'Good results after two weeks, but could be faster.',
-        displayName: 'Alice Johnson',
-        day: '12/25/2025',
-    },
-    {
-        star: 3,
-        content: 'Reduced heaviness in legs, satisfied overall.',
-        displayName: 'Bob Brown',
-        day: '12/20/2025',
-    },
-    {
-        star: 3,
-        content: 'Not bad, but I expected more from the capsules.',
-        displayName: 'Carol Davis',
-        day: '12/15/2025',
-    },
-    {
-        star: 3,
-        content: 'Saw minor changes, will continue using.',
-        displayName: 'David Evans',
-        day: '12/10/2025',
-    },
-    {
-        star: 3,
-        content: 'Helps with daily comfort, but not a miracle.',
-        displayName: 'Eve Foster',
-        day: '12/05/2025',
-        pictures: [
-            'https://judgeme.imgix.net/sculptique/1752663679__1752663592120-image__original.jpg?auto=format&w=160',
-        ],
-    },
-    {
-        star: 3,
-        content: 'Improved skin texture slightly.',
-        displayName: 'Frank Green',
-        day: '11/30/2025',
-    },
-    {
-        star: 3,
-        content: 'Decent product for the price.',
-        displayName: 'Grace Harris',
-        day: '11/25/2025',
-    },
-    {
-        star: 3,
-        content: 'Noticeable difference in swelling reduction.',
-        displayName: 'Henry Irving',
-        day: '11/20/2025',
-    },
-    {
-        star: 2,
-        content: 'Not seeing much improvement, might stop using.',
-        displayName: 'Ivy Jackson',
-        day: '11/15/2025',
-    },
-];
+import { initialReviews } from '~/data/data';
 
 export const Review = () => {
     const [previews, setPreviews] = useState([]);
@@ -527,10 +287,25 @@ export const Review = () => {
     const goToPrev = () => goToPage(currentPage - 1);
     const goToNext = () => goToPage(currentPage + 1);
     const goToLast = () => goToPage(totalPages);
+    const [isWide, setIsWide] = useState(window.innerWidth > 678);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsWide(window.innerWidth > 678);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <div>
-            <div className={styles.productJudgeOuter} style={{ padding: '56px 0' }}>
+            <div
+                className={styles.productJudgeOuter}
+                style={{
+                    padding: isWide ? '56px 0' : '55px 15px',
+                }}
+            >
                 <div className={styles.pageWidth}>
                     <div className={styles.productJudgeContainer}>
                         <img
@@ -691,6 +466,7 @@ export const Review = () => {
                                             <>
                                                 <form
                                                     className={styles.jdgmForm}
+                                                    style={{ padding: isWide ? '0px 16px' : '0px 0px' }}
                                                     onSubmit={handleSubmit}
                                                     noValidate="novalidate"
                                                 >
@@ -968,23 +744,43 @@ export const Review = () => {
                                                         </p>
                                                     </div>
 
-                                                    <div
-                                                        className={`${styles.jdgmFormFieldset} ${styles.jdgmFormFieldsetActions}`}
-                                                    >
-                                                        <a
-                                                            href="#judgeme_product_reviews"
-                                                            role="button"
-                                                            onClick={handleCancelReview}
-                                                            className={`${styles.jdgmBtn} ${styles.jdgmBtnBorder} ${styles.jdgmCancelRev}`}
+                                                    {window.innerWidth > 678 ? (
+                                                        <div
+                                                            className={`${styles.jdgmFormFieldset} ${styles.jdgmFormFieldsetActions}`}
                                                         >
-                                                            Cancel review
-                                                        </a>
-                                                        <input
-                                                            type="submit"
-                                                            className={`${styles.jdgmBtn} ${styles.jdgmBtnSolid} ${styles.jdgmSubmitRev}`}
-                                                            value="Submit Review"
-                                                        />
-                                                    </div>
+                                                            <a
+                                                                href="#judgeme_product_reviews"
+                                                                role="button"
+                                                                onClick={handleCancelReview}
+                                                                className={`${styles.jdgmBtn} ${styles.jdgmBtnBorder} ${styles.jdgmCancelRev}`}
+                                                            >
+                                                                Cancel review
+                                                            </a>
+                                                            <input
+                                                                type="submit"
+                                                                className={`${styles.jdgmBtn} ${styles.jdgmBtnSolid} ${styles.jdgmSubmitRev}`}
+                                                                value="Submit Review"
+                                                            />
+                                                        </div>
+                                                    ) : (
+                                                        <div className={styles.formMobile}>
+                                                            <input
+                                                                type="submit"
+                                                                // className={`${styles.jdgmBtn} ${styles.jdgmBtnSolid} ${styles.jdgmSubmitRev}`}
+                                                                className={styles.jdgmBtnMobile}
+                                                                value="Submit Review"
+                                                            />
+                                                            <a
+                                                                href="#judgeme_product_reviews"
+                                                                role="button"
+                                                                onClick={handleCancelReview}
+                                                                className={styles.jdgmBtnCancelMobile}
+                                                                // className={`${styles.jdgmBtn} ${styles.jdgmBtnBorder} ${styles.jdgmCancelRev}`}
+                                                            >
+                                                                Cancel review
+                                                            </a>
+                                                        </div>
+                                                    )}
                                                 </form>
                                             </>
                                         )}

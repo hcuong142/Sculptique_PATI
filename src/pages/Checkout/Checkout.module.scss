@@ -1,0 +1,320 @@
+.ibbzi {
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.iggpb {
+    border-bottom: 1px solid rgb(220, 220, 220);
+    padding: 1px;
+    background-color: rgba(255, 244, 244, 1);
+}
+
+.ihacf {
+    max-width: 1070px;
+    margin: 0 auto;
+    padding: 21px 31px;
+    width: 100%;
+}
+
+.headerContent {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 41px;
+}
+
+.logoContainer {
+    position: absolute;
+    left: 48%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
+.cartIcon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    color: black;
+    right: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    object-fit: contain;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.fkRow {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;
+}
+
+.fkCol,
+.col {
+    flex-grow: 1;
+    max-width: 1070px;
+}
+.content {
+    padding: 0px 1px;
+    max-width: 1070px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.fkRow {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    // flex-wrap: nowrap;
+    // padding: 10px;
+    height: auto;
+}
+.flexWrap {
+    // flex-wrap: wrap !important;
+}
+.leftContent {
+    padding: 30px 31px 10px;
+    flex-basis: 126%;
+    background-color: white;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    .swollenLegsAdContainer {
+        max-width: 560px;
+        border: 1px solid rgba(209, 213, 219, 1);
+        border-radius: 8px;
+        padding: 16px 20px;
+        background-color: rgba(255, 244, 244, 1);
+    }
+    .swollenLegsAdContent {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        .swollenLegsAdImage {
+            width: 70px;
+            height: 28px;
+            border-radius: 4px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .swollenLegsAdText {
+            flex: 1;
+        }
+        .swollenLegsAdHeadline {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+            line-height: 1.4;
+            color: rgba(31, 41, 55, 1);
+            text-align: left;
+            strong {
+                font-weight: 700;
+                color: rgba(0, 0, 0, 1);
+            }
+        }
+        .swollenLegsAdRating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            .swollenLegsAdLabel {
+                font-weight: 600;
+                color: rgba(31, 41, 55, 1);
+            }
+            .swollenLegsAdScore {
+                font-weight: 700;
+                color: rgba(0, 0, 0, 1);
+            }
+            .swollenLegsAdStars {
+                color: rgba(251, 191, 36, 1);
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+            .swollenLegsAdCount {
+                color: rgba(107, 114, 128, 1);
+            }
+        }
+    }
+    .wrap {
+        display: block;
+        margin: 0px auto;
+        max-width: 40em;
+        margin-top: 15px;
+        .io2r2 {
+            margin-top: 6px;
+            margin-bottom: 6px;
+            padding-left: 6px;
+            padding-right: 6px;
+        }
+        .iej0z2 {
+            font-size: 18px;
+            font-weight: 500;
+            padding: 0px;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            font-family: montserrat;
+            color: rgb(51, 51, 51);
+            line-height: 21px;
+        }
+        .chExpressCheckoutGroupTitle {
+            margin: 0px;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: flex-end;
+            text-align: center;
+        }
+        .chExpressCheckoutGroupTitle::before {
+            content: '';
+            border-width: 1px 0px 0px 1px;
+            border-image: initial;
+            height: 0.58em;
+            flex: 1 0 2em;
+            border-top-left-radius: 5px;
+            margin-right: 1em;
+        }
+        .chExpressCheckoutGroupTitle::after {
+            content: '';
+            border-width: 1px 1px 0px 0px;
+            border-image: initial;
+            height: 0.58em;
+            flex: 1 0 2em;
+            border-top-right-radius: 5px;
+            margin-left: 1em;
+        }
+        .id4vz2 {
+            padding: 1px 6px;
+            border-style: none;
+            border-bottom-left-radius: 1px;
+            border-bottom-right-radius: 1px;
+        }
+        .chExpressCheckoutGroupBody {
+            display: flex;
+            justify-content: center;
+            border-width: 0px 1px 1px;
+            border-image: initial;
+        }
+        .ccId86SKYCfYO3Fu {
+            max-width: 100%;
+            width: 200px;
+            height: 45px;
+            padding: 6px 12px;
+            background-size: cover;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btnApplePay {
+            background-repeat: no-repeat;
+            background-position: center center;
+            border: none;
+            color: transparent !important;
+            background-color: transparent;
+        }
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: normal;
+            vertical-align: middle;
+            user-select: none;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition:
+                color 0.15s ease-in-out,
+                background-color 0.15s ease-in-out,
+                border-color 0.15s ease-in-out,
+                box-shadow 0.15s ease-in-out;
+            margin: 20px 10px;
+            font-size: 20px;
+        }
+        .ccIdLE2g1eE2L7ak {
+            max-width: 100%;
+            width: 200px;
+            background-size: contain;
+            margin-left: 0px;
+        }
+        .btnPayPal2 {
+            background-image: url('https://config.checkoutchamp.com/production/paypal-checkout-3.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            color: transparent;
+            background-color: rgba(255, 209, 26, 1);
+            border: 1px solid transparent;
+        }
+        .btn {
+            font-weight: 400;
+            text-align: center;
+            white-space: normal;
+            vertical-align: middle;
+            user-select: none;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition:
+                color 0.15s ease-in-out,
+                background-color 0.15s ease-in-out,
+                border-color 0.15s ease-in-out,
+                box-shadow 0.15s ease-in-out;
+            margin: 20px 10px;
+            font-size: 20px;
+        }
+        .zoidPaypalButtons {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            min-height: 35px;
+            min-width: 200px;
+            font-size: 0;
+        }
+        .iu62du22 {
+            margin-top: 1px;
+            margin-bottom: 6px;
+        }
+        .chExpressCheckoutGroupOrLine {
+            font-size: 0.85714em;
+            // margin-top: 28px;
+            padding-bottom: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            line-height: 1.4;
+            text-align: center;
+            text-transform: uppercase;
+            color: rgb(115, 115, 115);
+            span {
+                display: inline-block;
+            }
+        }
+        .chExpressCheckoutGroupOrLine::before {
+            content: '';
+            display: inline-block;
+            height: 1px;
+            background-color: rgb(230, 230, 230);
+            flex-grow: 1;
+        }
+        .chExpressCheckoutGroupOrLine::after {
+            content: '';
+            display: inline-block;
+            height: 1px;
+            background-color: rgb(230, 230, 230);
+            flex-grow: 1;
+        }
+        .i9ptpj {
+            font-size: 15px;
+            font-weight: 500;
+            padding: 0px 10px;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            background-color: white;
+            font-family: montserrat;
+        }
+    }
+}

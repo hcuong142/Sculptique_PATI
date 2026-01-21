@@ -33,7 +33,7 @@ export const JudgeOuter = () => {
                 <div className={styles.productWhyBloatingGrid}>
                     <div className={styles.productWhyBloatingCell}>
                         <div>
-                            <img src="//trysculptique.com/cdn/shop/files/Untitled_design_3.png?v=1760689800" />
+                            <img alt=" " src="//trysculptique.com/cdn/shop/files/Untitled_design_3.png?v=1760689800" />
                         </div>
                         <div className={styles.productWhyBloatCellIn}>
                             <div>
@@ -43,7 +43,10 @@ export const JudgeOuter = () => {
                     </div>
                     <div className={styles.productWhyBloatingCell}>
                         <div>
-                            <img src="//trysculptique.com/cdn/shop/files/Untitled_design_3_1.png?v=1760689799" />
+                            <img
+                                alt=" "
+                                src="//trysculptique.com/cdn/shop/files/Untitled_design_3_1.png?v=1760689799"
+                            />
                         </div>
                         <div className={styles.productWhyBloatCellIn}>
                             <div>
@@ -53,7 +56,7 @@ export const JudgeOuter = () => {
                     </div>
                     <div className={styles.productWhyBloatingCell}>
                         <div>
-                            <img src="//trysculptique.com/cdn/shop/files/Untitled_design_4.png?v=1760689801" />
+                            <img alt=" " src="//trysculptique.com/cdn/shop/files/Untitled_design_4.png?v=1760689801" />
                         </div>
                         <div className={styles.productWhyBloatCellIn}>
                             <div>
@@ -66,7 +69,10 @@ export const JudgeOuter = () => {
                     </div>
                     <div className={styles.productWhyBloatingCell}>
                         <div>
-                            <img src="//trysculptique.com/cdn/shop/files/Untitled_design_4_1.png?v=1760689799" />
+                            <img
+                                alt=" "
+                                src="//trysculptique.com/cdn/shop/files/Untitled_design_4_1.png?v=1760689799"
+                            />
                         </div>
                         <div className={styles.productWhyBloatCellIn}>
                             <div>
@@ -76,7 +82,10 @@ export const JudgeOuter = () => {
                     </div>
                     <div className={styles.productWhyBloatingCell}>
                         <div>
-                            <img src="//trysculptique.com/cdn/shop/files/Untitled_design_3_2.png?v=1760689799" />
+                            <img
+                                alt=" "
+                                src="//trysculptique.com/cdn/shop/files/Untitled_design_3_2.png?v=1760689799"
+                            />
                         </div>
                         <div className={styles.productWhyBloatCellIn}>
                             <div>

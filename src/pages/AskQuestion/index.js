@@ -186,7 +186,10 @@ export const AskQuestion = () => {
                         </a>
                         <p className={styles.productPrimaryBtnFooter}>
                             <span>
-                                <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395" />
+                                <img
+                                    alt=" "
+                                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395"
+                                />
                             </span>
                             <span>60-Day Money-Back Guarantee</span>
                         </p>
@@ -208,6 +211,7 @@ export const AskQuestion = () => {
                                 </div>
                                 {isMobile ? (
                                     <img
+                                        alt=" "
                                         loading="lazy"
                                         class="Desktop_only"
                                         src="//trysculptique.com/cdn/shop/files/numbdeskt-min_png.png?v=1760942458"
@@ -215,11 +219,13 @@ export const AskQuestion = () => {
                                 ) : (
                                     <>
                                         <img
+                                            alt=" "
                                             loading="lazy"
                                             class="Mobile_only"
                                             src="//trysculptique.com/cdn/shop/files/Frame_1000003537.jpg?v=1760943777"
                                         />
                                         <img
+                                            alt=" "
                                             loading="lazy"
                                             class="Mobile_only"
                                             src="//trysculptique.com/cdn/shop/files/numbmob-min_png.png?v=1760942458"
@@ -231,6 +237,7 @@ export const AskQuestion = () => {
                         <div className={styles.productExpertMedia}>
                             {isMobile ? (
                                 <img
+                                    alt=" "
                                     loading="lazy"
                                     src="//trysculptique.com/cdn/shop/files/Frame_1000003537.jpg?v=1760943777"
                                 />
@@ -249,12 +256,14 @@ export const AskQuestion = () => {
                             <div className={styles.productTextImageContent}>
                                 {isMobile ? (
                                     <img
+                                        alt=" "
                                         loading="lazy"
                                         className={styles.productTextImageReviews}
                                         src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Trustpilot_review.png?v=1752480694"
                                     />
                                 ) : (
                                     <img
+                                        alt=" "
                                         loading="lazy"
                                         className={styles.productTextImageReviewsMobile}
                                         src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Trustpilot_review_1.png?v=1752480694"
@@ -277,10 +286,11 @@ export const AskQuestion = () => {
                                 </div>
                                 {window.innerWidth <= 678 && (
                                     <img
+                                        alt=" "
                                         loading="lazy"
-                                        class="Mobile_only product_section-text-main-img"
+                                        class="Mobile_only product_section-text-main-img alt=' '"
                                         src="//trysculptique.com/cdn/shop/files/before-min_png.png?v=1760688928"
-                                    ></img>
+                                    />
                                 )}
                                 <div className={styles.productTextImagePoints}></div>
                                 <div
@@ -295,7 +305,10 @@ export const AskQuestion = () => {
                                     </a>
                                     <p className={styles.productPrimaryBtnFooter}>
                                         <span>
-                                            <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395" />
+                                            <img
+                                                alt=" "
+                                                src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395"
+                                            />
                                         </span>
                                         <span>60-Day Money-Back Guarantee</span>
                                     </p>
@@ -305,6 +318,7 @@ export const AskQuestion = () => {
                         <div className={styles.productTextImageMedia}>
                             {isMobile ? (
                                 <img
+                                    alt=" "
                                     loading="lazy"
                                     src="//trysculptique.com/cdn/shop/files/before-min_png.png?v=1760688928"
                                 />

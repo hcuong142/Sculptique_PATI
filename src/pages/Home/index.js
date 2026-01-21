@@ -110,13 +110,21 @@ export const Home = ({ productId = 2691 }) => {
                                 <>
                                     <div className={styles.mainProductImages}>
                                         <div className={styles.mainProduct1st}>
-                                            <img className={styles.img1st} src={productImages[0]} loading="eager" />
+                                            <img
+                                                alt=" "
+                                                className={styles.img1st}
+                                                src={productImages[0]}
+                                                loading="eager"
+                                            />
                                             <div
                                                 onClick={() => setIsModalOpenNutri(true)}
                                                 className={styles.mainProductNutritionInfo}
                                             >
                                                 <span>
-                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/leaves_1247958_1_cf2e7df4-c113-4c3a-be49-f876ec94d873.png?v=1766822629" />
+                                                    <img
+                                                        alt=" "
+                                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/leaves_1247958_1_cf2e7df4-c113-4c3a-be49-f876ec94d873.png?v=1766822629"
+                                                    />
                                                 </span>
                                                 <span>Nutritional Information</span>
                                             </div>
@@ -124,6 +132,7 @@ export const Home = ({ productId = 2691 }) => {
                                                 <div className={styles.nutritionPopupOuter} style={{ display: 'flex' }}>
                                                     <div className={styles.nutritionPopupInner}>
                                                         <img
+                                                            alt=" "
                                                             onClick={() => setIsModalOpenNutri(false)}
                                                             loading="lazy"
                                                             className={styles.nutritionPopupClose}
@@ -134,12 +143,14 @@ export const Home = ({ productId = 2691 }) => {
                                                         </h2>
                                                         {isMobile ? (
                                                             <img
+                                                                alt=" "
                                                                 style={{ aspectRatio: '0' }}
                                                                 className={`${styles.DesktopOnly} ${styles.nutritionImage}`}
                                                                 src="//trysculptique.com/cdn/shop/files/ingredients-min.png?v=1758713223"
                                                             />
                                                         ) : (
                                                             <img
+                                                                alt=" "
                                                                 style={{ aspectRatio: '0' }}
                                                                 class="Mobile_only nutrition_image"
                                                                 src="//trysculptique.com/cdn/shop/files/ingredients-min.png?v=1758713223"
@@ -152,7 +163,10 @@ export const Home = ({ productId = 2691 }) => {
                                                         <div className={styles.mainProductPoints}>
                                                             <div className={styles.mainProductPointLine}>
                                                                 <div>
-                                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285" />
+                                                                    <img
+                                                                        alt=" "
+                                                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                                                                    />
                                                                 </div>
                                                                 <div>
                                                                     <p>Made &amp; produced in the USA</p>
@@ -160,7 +174,10 @@ export const Home = ({ productId = 2691 }) => {
                                                             </div>
                                                             <div className={styles.mainProductPointLine}>
                                                                 <div>
-                                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285" />
+                                                                    <img
+                                                                        alt=" "
+                                                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                                                                    />
                                                                 </div>
                                                                 <div>
                                                                     <p>100% Natural Ingredients</p>
@@ -168,7 +185,10 @@ export const Home = ({ productId = 2691 }) => {
                                                             </div>
                                                             <div className={styles.mainProductPointLine}>
                                                                 <div>
-                                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285" />
+                                                                    <img
+                                                                        alt=" "
+                                                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                                                                    />
                                                                 </div>
                                                                 <div>
                                                                     <p>60-Day Money-Back Guarantee</p>
@@ -176,7 +196,10 @@ export const Home = ({ productId = 2691 }) => {
                                                             </div>
                                                             <div className={styles.mainProductPointLine}>
                                                                 <div>
-                                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285" />
+                                                                    <img
+                                                                        alt=" "
+                                                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                                                                    />
                                                                 </div>
                                                                 <div>
                                                                     <p>Free Shipping</p>
@@ -187,6 +210,7 @@ export const Home = ({ productId = 2691 }) => {
                                                 </div>
                                             )}
                                             <img
+                                                alt=" "
                                                 className={styles.mainProducTBfBadge}
                                                 src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/nysale.png?v=1766822224"
                                             />
@@ -194,12 +218,14 @@ export const Home = ({ productId = 2691 }) => {
                                         <div className={styles.mainProduct2nd}>
                                             <div>
                                                 <img
+                                                    alt=" "
                                                     loading="eager"
                                                     src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard2.jpg?v=1760103684"
                                                 />
                                             </div>
                                             <div>
                                                 <img
+                                                    alt=" "
                                                     loading="eager"
                                                     src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard3copy.jpg?v=1760103684"
                                                 />
@@ -208,18 +234,21 @@ export const Home = ({ productId = 2691 }) => {
                                         <div className={styles.mainProduct3rd}>
                                             <div>
                                                 <img
+                                                    alt=" "
                                                     loading="eager"
                                                     src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard4.jpg?v=1760103685"
                                                 />
                                             </div>
                                             <div>
                                                 <img
+                                                    alt=" "
                                                     loading="eager"
                                                     src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard5_1.jpg?v=1760103685"
                                                 />
                                             </div>
                                             <div>
                                                 <img
+                                                    alt=" "
                                                     loading="eager"
                                                     src="//trysculptique.com/cdn/shop/files/LymphDrainageREWAMPEDvisualsArtboard5_2.jpg?v=1760103685"
                                                 />
@@ -228,12 +257,14 @@ export const Home = ({ productId = 2691 }) => {
                                         <div className={styles.mainProduct2ndBottom}>
                                             <div>
                                                 <img
+                                                    alt=" "
                                                     loading="lazy"
                                                     src="//trysculptique.com/cdn/shop/files/tiredness-min.png?v=1758713216"
                                                 />
                                             </div>
                                             <div>
                                                 <img
+                                                    alt=" "
                                                     loading="lazy"
                                                     src="//trysculptique.com/cdn/shop/files/puffiness-min.png?v=1758713216"
                                                 />
@@ -428,7 +459,10 @@ export const Home = ({ productId = 2691 }) => {
                         <div style={{ width: '100%' }}>
                             <div className={styles.mainProductReviews}>
                                 <div>
-                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Frame_229.png?v=1752064359" />
+                                    <img
+                                        alt=" "
+                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Frame_229.png?v=1752064359"
+                                    />
                                 </div>
                                 <div>
                                     <p>4.8/5 Excellent | Based on 2381 Reviews</p>
@@ -441,6 +475,7 @@ export const Home = ({ productId = 2691 }) => {
                                 <div className={styles.mainProductFeatureLine}>
                                     <div>
                                         <img
+                                            alt=" "
                                             loading="lazy"
                                             src="//trysculptique.com/cdn/shop/files/population_12285628_1_e864791e-7a6d-4f08-9aea-3aeffba37cc7.png?v=1758713413"
                                         />
@@ -452,6 +487,7 @@ export const Home = ({ productId = 2691 }) => {
                                 <div className={styles.mainProductFeatureLine}>
                                     <div>
                                         <img
+                                            alt=" "
                                             loading="lazy"
                                             src="//trysculptique.com/cdn/shop/files/blood_13858030_1.png?v=1752064910"
                                         />
@@ -463,6 +499,7 @@ export const Home = ({ productId = 2691 }) => {
                                 <div className={styles.mainProductFeatureLine}>
                                     <div>
                                         <img
+                                            alt=" "
                                             loading="lazy"
                                             src="//trysculptique.com/cdn/shop/files/thigh_1431039_1_a75a1917-7cc8-40dc-923b-d09cece1d6e9.png?v=1758713413"
                                         />
@@ -474,6 +511,7 @@ export const Home = ({ productId = 2691 }) => {
                                 <div className={styles.mainProductFeatureLine}>
                                     <div>
                                         <img
+                                            alt=" "
                                             loading="lazy"
                                             src="//trysculptique.com/cdn/shop/files/smile_3318262_1_1da99ae9-5c63-4339-af75-d35f89cd1cbc.png?v=1758713414"
                                         />
@@ -485,6 +523,7 @@ export const Home = ({ productId = 2691 }) => {
                                 <div className={styles.mainProductFeatureLine}>
                                     <div>
                                         <img
+                                            alt=" "
                                             loading="lazy"
                                             src="//trysculptique.com/cdn/shop/files/blood_13858030_2_78da9178-9f3f-491e-a5f8-b4d69dd5b9cd.png?v=1758713414"
                                         />
@@ -498,6 +537,7 @@ export const Home = ({ productId = 2691 }) => {
                                 <div className={styles.mainProductFeatureLine}>
                                     <div>
                                         <img
+                                            alt=" "
                                             loading="lazy"
                                             src="//trysculptique.com/cdn/shop/files/ecology_18588873_1_dad420da-2490-4e30-828a-28b366974307.png?v=1758713413"
                                         />
@@ -762,7 +802,7 @@ export const Home = ({ productId = 2691 }) => {
                                                 <div className={styles.frNoteHeader}>
                                                     <div className={`${styles.images} ${styles.mural1}`}>
                                                         <div className={styles.placeHolder}></div>
-                                                        <img src={selectedProvider.image} />
+                                                        <img alt=" " src={selectedProvider.image} />
                                                     </div>
                                                     <h1 className={styles.frDoctorTitle}>{selectedProvider.name}</h1>
                                                 </div>
@@ -1332,7 +1372,10 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                         <div className={styles.productSelectorPerks}>
                             <div className={styles.productSelectorPerksLine}>
                                 <div>
-                                    <img src="//trysculptique.com/cdn/shop/files/delivery-truck_181581.png?v=1749555916" />
+                                    <img
+                                        alt=" "
+                                        src="//trysculptique.com/cdn/shop/files/delivery-truck_181581.png?v=1749555916"
+                                    />
                                 </div>
                                 <div>
                                     <p>
@@ -1368,7 +1411,10 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                         <div className={styles.productSelectorPerks}>
                             <div className={styles.productSelectorPerksLine}>
                                 <div>
-                                    <img src="//trysculptique.com/cdn/shop/files/delivery-truck_181581.png?v=1749555916" />
+                                    <img
+                                        alt=" "
+                                        src="//trysculptique.com/cdn/shop/files/delivery-truck_181581.png?v=1749555916"
+                                    />
                                 </div>
                                 <div>
                                     <p>
@@ -1378,7 +1424,10 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                             </div>
                             <div className={styles.productSelectorPerksLine}>
                                 <div>
-                                    <img src="//trysculptique.com/cdn/shop/files/download_5307610.png?v=1749555943" />
+                                    <img
+                                        alt=" "
+                                        src="//trysculptique.com/cdn/shop/files/download_5307610.png?v=1749555943"
+                                    />
                                 </div>
                                 <div>
                                     <p>
@@ -1413,7 +1462,10 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                         <div className={styles.productSelectorPerks}>
                             <div className={styles.productSelectorPerksLine}>
                                 <div>
-                                    <img src="//trysculptique.com/cdn/shop/files/delivery-truck_181581.png?v=1749555916" />
+                                    <img
+                                        alt=" "
+                                        src="//trysculptique.com/cdn/shop/files/delivery-truck_181581.png?v=1749555916"
+                                    />
                                 </div>
                                 <div>
                                     <p>
@@ -1423,7 +1475,10 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                             </div>
                             <div className={styles.productSelectorPerksLine}>
                                 <div>
-                                    <img src="//trysculptique.com/cdn/shop/files/download_5307610.png?v=1749555943" />
+                                    <img
+                                        alt=" "
+                                        src="//trysculptique.com/cdn/shop/files/download_5307610.png?v=1749555943"
+                                    />
                                 </div>
                                 <div>
                                     <p>
@@ -1435,7 +1490,10 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                             </div>
                             <div className={styles.productSelectorPerksLine}>
                                 <div>
-                                    <img src="//trysculptique.com/cdn/shop/files/Kaching-Bundles-Kaching-Bundles-Kaching-Bundles-gift-card_18054896_300x300_300x300_72117561-797d-4e48-9491-3bc1748ce974.png?v=1749556309" />
+                                    <img
+                                        alt=" "
+                                        src="//trysculptique.com/cdn/shop/files/Kaching-Bundles-Kaching-Bundles-Kaching-Bundles-gift-card_18054896_300x300_300x300_72117561-797d-4e48-9491-3bc1748ce974.png?v=1749556309"
+                                    />
                                 </div>
                                 <div>
                                     <p>
@@ -1483,7 +1541,7 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                 </div>
                 <div className={styles.productAtcFooterInLine}>
                     <div>
-                        <img src="https://cdn.shopify.com/s/files/1/0779/0673/9384/files/clock.webp" />
+                        <img alt=" " src="https://cdn.shopify.com/s/files/1/0779/0673/9384/files/clock.webp" />
                     </div>
                     <div>
                         <p>Stop or Cancel Anytime</p>
@@ -1492,11 +1550,13 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
             </div>
 
             <img
+                alt=" "
                 className={styles.productPaymentIcon}
                 src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Frame_1000003454.png?v=1752066654"
             />
 
             <img
+                alt=" "
                 loading="lazy"
                 className={styles.desktopProductBF}
                 src="//trysculptique.com/cdn/shop/files/CTA_Button_Add_To_Cart_8b5e7dd2-d716-4b24-a339-d8f27d86e61a.png?v=1766758486"
@@ -1505,7 +1565,10 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
             <div className={styles.productAtcIcons}>
                 <div className={styles.productAtcIconLine}>
                     <div>
-                        <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1.png?v=1752066864" />
+                        <img
+                            alt=" "
+                            src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1.png?v=1752066864"
+                        />
                     </div>
                     <div>
                         <p>60-Day Money-Back Guarantee</p>
@@ -1513,7 +1576,10 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                 </div>
                 <div className={styles.productAtcIconLine}>
                     <div>
-                        <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Frame_1000003293.png?v=1752066864" />
+                        <img
+                            alt=" "
+                            src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Frame_1000003293.png?v=1752066864"
+                        />
                     </div>
                     <div>
                         <p>Free Shipping From USA Included </p>
@@ -1525,6 +1591,7 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                 <div className={styles.mainProductReviewMeta}>
                     <div>
                         <img
+                            alt=" "
                             loading="lazy"
                             src="//trysculptique.com/cdn/shop/files/AI_Nurse_Holding_TORC_2_efcbd677-7242-4cb2-9f99-ad1e3726b19b.png?v=1752500889"
                         />
@@ -1533,10 +1600,14 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                         <p>
                             Margaret Ellison | FL
                             <span>
-                                <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Frame_7966.png?v=1752068267" />
+                                <img
+                                    alt=" "
+                                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Frame_7966.png?v=1752068267"
+                                />
                             </span>
                         </p>
                         <img
+                            alt=" "
                             className={styles.mainProductReviewStars}
                             src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/stars-4.5_1.png?v=1752068267"
                         />
@@ -1562,6 +1633,7 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                         <p>Ingredients proven by science</p>
                         <span>
                             <img
+                                alt=" "
                                 style={{ transform: expandedTabs.includes(0) ? 'rotate(45deg)' : 'rotate(0deg)' }}
                                 src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Button_To_Expand_1_8a6027c0-281a-4c6b-8881-60673c7255ec.png?v=1758716844"
                             />
@@ -1611,6 +1683,7 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                         <p>How does it actually work?</p>
                         <span>
                             <img
+                                alt=" "
                                 style={{ transform: expandedTabs.includes(1) ? 'rotate(45deg)' : 'rotate(0deg)' }}
                                 src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Button_To_Expand_1_8a6027c0-281a-4c6b-8881-60673c7255ec.png?v=1758716844"
                             />
@@ -1629,6 +1702,7 @@ export const AddToCartPart = ({ activePackage, setActivePackage, toggleTab, expa
                         <p>Shipping and returns</p>
                         <span>
                             <img
+                                alt=" "
                                 style={{ transform: expandedTabs.includes(2) ? 'rotate(45deg)' : 'rotate(0deg)' }}
                                 src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Button_To_Expand_1_8a6027c0-281a-4c6b-8881-60673c7255ec.png?v=1758716844"
                             />

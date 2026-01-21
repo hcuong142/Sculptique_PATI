@@ -37,6 +37,7 @@ export const Checkout = () => {
                             <div className={styles.swollenLegsAdContainer}>
                                 <div className={styles.swollenLegsAdContent}>
                                     <img
+                                        alt=" "
                                         src="https://assets.checkoutchamp.com/d95940e3-bb5d-4058-95c6-d509b146af7e/1766065371601_1762118247033_customers_three.webp"
                                         className={styles.swollenLegsAdImage}
                                     ></img>

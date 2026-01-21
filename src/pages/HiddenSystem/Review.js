@@ -78,10 +78,6 @@ export const Review = () => {
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
     const currentReviews = filteredReviews.slice(indexOfFirstReview, indexOfLastReview);
     const [selectedRating, setSelectedRating] = useState(null);
-    const handleSortChange = (e) => {
-        setSortOption(e.target.value);
-        setCurrentPage(1);
-    };
     const [isLoading, setIsLoading] = useState(false);
     const simulateLoading = () => {
         return new Promise((resolve) => {
@@ -265,6 +261,7 @@ export const Review = () => {
                 <div className={styles.pageWidth}>
                     <div className={styles.productJudgeContainer}>
                         <img
+                            alt=" "
                             src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Trustpilot_Score.png?v=1752349211"
                             className={styles.productReviewsTrust}
                         />
@@ -378,7 +375,6 @@ export const Review = () => {
                                         {isWritingReview ? (
                                             isSubmitted ? (
                                                 <a
-                                                    href="#"
                                                     className={`${styles.jdgmWriteRevLink} ${styles.jdgmWriteRevLinkRefresh}`}
                                                     role="button"
                                                     onClick={(e) => {
@@ -392,7 +388,6 @@ export const Review = () => {
                                                 </a>
                                             ) : (
                                                 <a
-                                                    href="#"
                                                     className={styles.jdgmWriteRevLink}
                                                     role="button"
                                                     onClick={handleCancelReview}
@@ -402,7 +397,6 @@ export const Review = () => {
                                             )
                                         ) : (
                                             <a
-                                                href="#"
                                                 className={styles.jdgmWriteRevLink}
                                                 role="button"
                                                 onClick={handleWriteReview}
@@ -943,7 +937,6 @@ export const Review = () => {
                                                                 className={styles.jdgmRevPicsLink}
                                                                 target="_blank"
                                                                 rel="nofollow noreferrer"
-                                                                href={picUrl.replace('&w=160', '')}
                                                                 data-mfp-src={picUrl.replace('&w=160', '&w=1024')}
                                                                 aria-label={`Link to user picture ${picIdx + 1}`}
                                                             >
@@ -986,7 +979,6 @@ export const Review = () => {
 
                                         {(() => {
                                             const pagesToShow = [];
-                                            const maxVisible = 3; // Giới hạn tối đa 3 số trang
 
                                             // Luôn hiển thị trang 1 nếu không gần cuối
                                             if (currentPage < totalPages - 1) {

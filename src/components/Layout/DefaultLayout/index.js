@@ -1,12 +1,11 @@
 import Header from '~/components/Layout/components/Header';
-import styles from './DefaultLayout.module.scss';
 
 function DefaultLayout({ children }) {
     return (
-        <div >
+        <div>
             <Header />
-            <div >
-                <div >{children}</div>
+            <div>
+                <div>{children}</div>
             </div>
         </div>
     );

@@ -12,6 +12,7 @@ export const HiddenSystem = () => {
     const [activeIndexes, setActiveIndexes] = useState([]);
     const contentRefs = useRef([]);
     const [isWide, setIsWide] = useState(window.innerWidth > 678);
+    console.log(currentSlide);
 
     useEffect(() => {
         const handleResize = () => {
@@ -263,12 +264,14 @@ export const HiddenSystem = () => {
                         <div>
                             {isWide ? (
                                 <img
+                                    alt=" "
                                     loading="lazy"
                                     class="Desktop_only"
                                     src="//trysculptique.com/cdn/shop/files/Frame_1484580366_1.png?v=1760701546"
                                 />
                             ) : (
                                 <img
+                                    alt=" "
                                     loading="lazy"
                                     class="Mobile_only"
                                     src="//trysculptique.com/cdn/shop/files/Frame_1484580366_1.png?v=1760701546"
@@ -290,6 +293,7 @@ export const HiddenSystem = () => {
                             <div className={`${styles.pliFlex} ${styles.reversed}`}>
                                 <div>
                                     <img
+                                        alt=" "
                                         loading="lazy"
                                         class="Desktop_only"
                                         src="//trysculptique.com/cdn/shop/files/ChatGPT_Image_Oct_10_2025_at_03_26_38_PM_2.png?v=1760702096"
@@ -372,6 +376,7 @@ export const HiddenSystem = () => {
                                 </div>
                                 <div>
                                     <img
+                                        alt=" "
                                         loading="lazy"
                                         class="Mobile_only"
                                         src="//trysculptique.com/cdn/shop/files/ChatGPT_Image_Oct_10_2025_at_03_26_38_PM_2.png?v=1760702096"
@@ -399,7 +404,7 @@ export const HiddenSystem = () => {
                         <div className={styles.productWhyBloatingGrid}>
                             <div className={styles.productWhyNothingCell}>
                                 <div>
-                                    <img src="//trysculptique.com/cdn/shop/files/X1.jpg?v=1760943360" />
+                                    <img alt=" " src="//trysculptique.com/cdn/shop/files/X1.jpg?v=1760943360" />
                                 </div>
                                 <div className={styles.productWhyNothingCellIn}>
                                     <h4>You cut out gluten, dairy, sugar. You ate clean for months.</h4>
@@ -408,6 +413,7 @@ export const HiddenSystem = () => {
                                             <span>Why it failed</span>
                                             <span>
                                                 <img
+                                                    alt=" "
                                                     loading="lazy"
                                                     src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Vector_6.png?v=1760696853"
                                                 />
@@ -422,7 +428,7 @@ export const HiddenSystem = () => {
                             </div>
                             <div className={styles.productWhyNothingCell}>
                                 <div>
-                                    <img src="//trysculptique.com/cdn/shop/files/X2.jpg?v=1760943359" />
+                                    <img alt=" " src="//trysculptique.com/cdn/shop/files/X2.jpg?v=1760943359" />
                                 </div>
                                 <div className={styles.productWhyNothingCellIn}>
                                     <h4>You tried viral lymphatic drops from TikTok.</h4>
@@ -431,6 +437,7 @@ export const HiddenSystem = () => {
                                             <span>Why it failed</span>
                                             <span>
                                                 <img
+                                                    alt=" "
                                                     loading="lazy"
                                                     src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Vector_6.png?v=1760696853"
                                                 />
@@ -446,7 +453,7 @@ export const HiddenSystem = () => {
                             </div>
                             <div className={styles.productWhyNothingCell}>
                                 <div>
-                                    <img src="//trysculptique.com/cdn/shop/files/X3.jpg?v=1760943359" />
+                                    <img alt=" " src="//trysculptique.com/cdn/shop/files/X3.jpg?v=1760943359" />
                                 </div>
                                 <div className={styles.productWhyNothingCellIn}>
                                     <h4>You got lymphatic massage or bought compression socks.</h4>
@@ -455,6 +462,7 @@ export const HiddenSystem = () => {
                                             <span>Why it failed</span>
                                             <span>
                                                 <img
+                                                    alt=" "
                                                     loading="lazy"
                                                     src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Vector_6.png?v=1760696853"
                                                 />
@@ -471,12 +479,14 @@ export const HiddenSystem = () => {
                         <div className={styles.productWhyNoteImg}>
                             {isWide ? (
                                 <img
+                                    alt=" "
                                     class="Desktop_only"
                                     loading="lazy"
                                     src="//trysculptique.com/cdn/shop/files/Group_7207_1.png?v=1760694176"
                                 />
                             ) : (
                                 <img
+                                    alt=" "
                                     class="Mobile_only"
                                     loading="lazy"
                                     src="//trysculptique.com/cdn/shop/files/Frame_1000003583_1.png?v=1760694176"
@@ -492,7 +502,10 @@ export const HiddenSystem = () => {
                             </a>
                             <p className={styles.productPrimaryBtnFooter}>
                                 <span>
-                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395" />
+                                    <img
+                                        alt=" "
+                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395"
+                                    />
                                 </span>
                                 <span>60 day money-back guarantee</span>
                             </p>
@@ -531,13 +544,17 @@ export const HiddenSystem = () => {
                                 >
                                     <p className={styles.productLymphIngrSubtitle}>
                                         <span>
-                                            <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/check-mark_17013456_2.png?v=1760698419" />
+                                            <img
+                                                alt=" "
+                                                src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/check-mark_17013456_2.png?v=1760698419"
+                                            />
                                         </span>
                                         <span>{ingredient.title}</span>
                                     </p>
                                     {isWide ? (
                                         <>
                                             <img
+                                                alt=" "
                                                 className={styles.productLymphMainImg}
                                                 loading="lazy"
                                                 src={ingredient.img}
@@ -547,20 +564,26 @@ export const HiddenSystem = () => {
                                                     <h5>{ingredient.thumb.name}</h5>
                                                 </div>
                                                 <div>
-                                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/weui_arrow-outlined.png?v=1760698626" />
+                                                    <img
+                                                        alt=" "
+                                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/weui_arrow-outlined.png?v=1760698626"
+                                                    />
                                                 </div>
                                             </div>
                                         </>
                                     ) : (
                                         <div className={styles.productLymphIngrThumb}>
                                             <div className={styles.productLymphMainImg}>
-                                                <img loading="lazy" src={ingredient.img} />
+                                                <img alt=" " loading="lazy" src={ingredient.img} />
                                             </div>
                                             <div>
                                                 <h5>{ingredient.thumb.name}</h5>
                                             </div>
                                             <div className={styles.productImg}>
-                                                <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/weui_arrow-outlined.png?v=1760698626" />
+                                                <img
+                                                    alt=" "
+                                                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/weui_arrow-outlined.png?v=1760698626"
+                                                />
                                             </div>
                                         </div>
                                     )}
@@ -583,12 +606,14 @@ export const HiddenSystem = () => {
                         <div className={styles.productLymphIngrTableSmall}>
                             {isWide ? (
                                 <img
+                                    alt=" "
                                     class="Desktop_only"
                                     loading="lazy"
                                     src="//trysculptique.com/cdn/shop/files/Frame_1000003583_2.png?v=1760697982"
                                 />
                             ) : (
                                 <img
+                                    alt=" "
                                     class="Mobile_only"
                                     loading="lazy"
                                     src="//trysculptique.com/cdn/shop/files/Frame_1000003583_3.png?v=1760697982"
@@ -611,22 +636,22 @@ export const HiddenSystem = () => {
                     >
                         <div className={styles.productIconsGrid}>
                             <div>
-                                <img src="//trysculptique.com/cdn/shop/files/ship-min.png?v=1758713222" />
+                                <img alt=" " src="//trysculptique.com/cdn/shop/files/ship-min.png?v=1758713222" />
                                 <p className={styles.h4title}>Free Shipping from USA</p>
                                 <p>On all orders</p>
                             </div>
                             <div>
-                                <img src="//trysculptique.com/cdn/shop/files/support-min.png?v=1758713216" />
+                                <img alt=" " src="//trysculptique.com/cdn/shop/files/support-min.png?v=1758713216" />
                                 <p className={styles.h4title}>Naturally Supports Your Body</p>
                                 <p>Promotes healthy immune cell functions</p>
                             </div>
                             <div>
-                                <img src="//trysculptique.com/cdn/shop/files/natural-min.png?v=1758713216" />
+                                <img alt=" " src="//trysculptique.com/cdn/shop/files/natural-min.png?v=1758713216" />
                                 <p className={styles.h4title}>100% Natural Ingredients</p>
                                 <p>8 active, natural ingredients</p>
                             </div>
                             <div>
-                                <img src="//trysculptique.com/cdn/shop/files/60-min.png?v=1758713216" />
+                                <img alt=" " src="//trysculptique.com/cdn/shop/files/60-min.png?v=1758713216" />
                                 <p className={styles.h4title}>Try it Risk Free for 60 Days</p>
                                 <p>60-day money-back guarantee</p>
                             </div>
@@ -680,7 +705,10 @@ export const HiddenSystem = () => {
                                         </a>
                                         <p className={styles.productPrimaryBtnFooter}>
                                             <span>
-                                                <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395" />
+                                                <img
+                                                    alt=" "
+                                                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395"
+                                                />
                                             </span>
                                             <span>60-Day Money-Back Guarantee</span>
                                         </p>
@@ -689,6 +717,7 @@ export const HiddenSystem = () => {
                             </div>
                             <div className={styles.productExpertMedia}>
                                 <img
+                                    alt=" "
                                     loading="lazy"
                                     src="//trysculptique.com/cdn/shop/files/greendeskt-min.png?v=1758713213"
                                 />
@@ -711,6 +740,7 @@ export const HiddenSystem = () => {
                     >
                         <div className={styles.productJudgeContainer}>
                             <img
+                                alt=" "
                                 src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Trustpilot_review_2.png?v=1752485383"
                                 className={styles.productUgcStars}
                             />
@@ -756,6 +786,7 @@ export const HiddenSystem = () => {
                                     onClick={() => sliderRef.current?.slickPrev()}
                                 >
                                     <img
+                                        alt=" "
                                         style={{ transform: 'rotate(360deg)', position: 'relative', top: '1px' }}
                                         src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_55aa38bb-cb5e-4608-9097-927814968771.png?v=1758716845"
                                     />
@@ -765,6 +796,7 @@ export const HiddenSystem = () => {
                                     onClick={() => sliderRef.current?.slickNext()}
                                 >
                                     <img
+                                        alt=" "
                                         style={{ transform: 'rotate(180deg)', position: 'relative', top: '1px' }}
                                         src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_55aa38bb-cb5e-4608-9097-927814968771.png?v=1758716845"
                                     />
@@ -780,7 +812,10 @@ export const HiddenSystem = () => {
                             </a>
                             <p className={styles.productPrimaryBtnFooter}>
                                 <span>
-                                    <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395" />
+                                    <img
+                                        alt=" "
+                                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395"
+                                    />
                                 </span>
                                 <span>60-Day Money-Back Guarantee</span>
                             </p>
